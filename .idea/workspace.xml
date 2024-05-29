@@ -7,8 +7,6 @@
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/tokenization/JottTokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/tokenization/JottTokenizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testers/JottParserTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testers/JottParserTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testers/JottTokenizerTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testers/JottTokenizerTester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +30,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.JottTokenizerTester.executor": "Run",
+    "Application.JottTokenizerTester.executor": "Debug",
     "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -100,7 +98,7 @@
       <option name="presentableId" value="Default" />
       <updated>1717021821705</updated>
       <workItem from="1717021822783" duration="91000" />
-      <workItem from="1717021937919" duration="1800000" />
+      <workItem from="1717021937919" duration="2284000" />
     </task>
     <servers />
   </component>

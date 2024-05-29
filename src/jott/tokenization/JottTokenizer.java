@@ -6,6 +6,7 @@ package jott.tokenization; /**
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -60,10 +61,17 @@ public class JottTokenizer {
      * @return an ArrayList of Jott Tokens
      */
     public static ArrayList<Token> tokenize(String filename) {
-		List<Character> chrs = JottTokenizer.readCharactersFromFile(filename);
+		ArrayList<Character> chrs = JottTokenizer.readCharactersFromFile(filename);
+		ArrayList<Token> tokens = new ArrayList<>();
 
-		Stream.of(chrs).forEach(System.out::println);
+		DFANode state = DFANode.START;
 
-		
+        for (Character chr : chrs) {
+            switch (state) {
+                default -> System.err.println("Not Implemented");
+            }
+        }
+
+		return tokens;
 	}
 }
