@@ -12,6 +12,7 @@ package testers;
  */
 
 import java.util.ArrayList;
+import jott.tokenization.*;
 
 public class JottTokenizerTester {
 

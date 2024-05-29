@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JottTranslater.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JottParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JottTokenizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JottTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Token.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TokenType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/tokenization/JottTokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/tokenization/JottTokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/testers/JottParserTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testers/JottParserTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/testers/JottTokenizerTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testers/JottTokenizerTester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,10 +32,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.JottTokenizerTester.executor": "Run",
     "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -56,8 +52,24 @@
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="jott" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.JottTokenizerTester">
+    <configuration name="JottTokenizerTester" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="testers.JottTokenizerTester" />
+      <module name="JottTranslater" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="testers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="JottTranslater" />
@@ -67,6 +79,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.JottTokenizerTester" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -87,7 +100,7 @@
       <option name="presentableId" value="Default" />
       <updated>1717021821705</updated>
       <workItem from="1717021822783" duration="91000" />
-      <workItem from="1717021937919" duration="390000" />
+      <workItem from="1717021937919" duration="1800000" />
     </task>
     <servers />
   </component>
