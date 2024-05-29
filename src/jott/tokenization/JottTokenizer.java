@@ -65,9 +65,11 @@ public class JottTokenizer {
 		ArrayList<Token> tokens = new ArrayList<>();
 
 		DFANode state = DFANode.START;
+		StringBuilder tokenBuffer = new StringBuilder();
 
         for (Character chr : chrs) {
             switch (state) {
+
                 default -> System.err.println("Not Implemented");
             }
         }
