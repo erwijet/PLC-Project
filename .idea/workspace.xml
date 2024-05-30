@@ -5,16 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/jott/tokenization/JottTokenizationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/jott/tokenization/JottTokenizerContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/tokenization/JottTokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/tokenization/JottTokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/testers/JottTokenizerTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testers/JottTokenizerTester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "contexts": [
+    {
+      "name": "default"
+    }
+  ],
+  "isMigrated": true
+}]]></component>
+  <component name="KubernetesSettings">
+    <option name="contextName" value="default" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -30,7 +51,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.JottTokenizerTester.executor": "Debug",
+    "Application.JottTokenizerTester.executor": "Run",
     "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -98,7 +119,7 @@
       <option name="presentableId" value="Default" />
       <updated>1717021821705</updated>
       <workItem from="1717021822783" duration="91000" />
-      <workItem from="1717021937919" duration="2360000" />
+      <workItem from="1717021937919" duration="9645000" />
     </task>
     <servers />
   </component>

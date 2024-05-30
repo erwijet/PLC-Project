@@ -110,8 +110,8 @@ public class JottTokenizerTester {
         filename = "tokenizerTestCases/stringMissingClosing.jott";
         testCases.add(new TestCase("StringMissingClosing", filename, null, true));
 
-        ArrayList<Token> phase1ExampleTokens = new ArrayList<>();
         filename = "tokenizerTestCases/phase1Example.jott";
+        ArrayList<Token> phase1ExampleTokens = new ArrayList<>();
         phase1ExampleTokens.add(new Token("Def", filename, 2, TokenType.ID_KEYWORD));
         phase1ExampleTokens.add(new Token("main", filename, 2, TokenType.ID_KEYWORD));
         phase1ExampleTokens.add(new Token("[", filename, 2, TokenType.L_BRACKET));

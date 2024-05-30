@@ -4,12 +4,13 @@ package jott.tokenization; /**
  * @author 
  **/
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.Array;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Stream;
 
 public class JottTokenizer {
@@ -27,7 +28,7 @@ public class JottTokenizer {
 		MATHOP,
 		SEMICOLON,
 		DIGIT,
-		DIGIT_NUMBER,
+		NUMBER_NUMBER,
 		NUMBER,
 		ID_OR_KEYWORD,
 		COLON,
@@ -38,22 +39,6 @@ public class JottTokenizer {
 		QUOTE_STR
 	}
 
-	private static ArrayList<Character> readCharactersFromFile(String filename) {
-		ArrayList<Character> chars = new ArrayList<>();
-		File f = new File(filename);
-
-		try (Scanner scanner = new Scanner(f)) {
-			while (scanner.hasNext()) {
-				String chr = scanner.next();
-				chars.add(chr.charAt(0));
-			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		return chars;
-	}
-
 	/**
      * Takes in a filename and tokenizes that file into Tokens
      * based on the rules of the Jott Language
@@ -61,19 +46,240 @@ public class JottTokenizer {
      * @return an ArrayList of Jott Tokens
      */
     public static ArrayList<Token> tokenize(String filename) {
-		ArrayList<Character> chrs = JottTokenizer.readCharactersFromFile(filename);
-		ArrayList<Token> tokens = new ArrayList<>();
+		JottTokenizerContext ctx = new JottTokenizerContext(filename);
 
 		DFANode state = DFANode.START;
-		StringBuilder tokenBuffer = new StringBuilder();
 
-        for (Character chr : chrs) {
-            switch (state) {
+		try {
+			while (!ctx.isDone()) {
+				Character chr = ctx.peekNext();
 
-                default -> System.err.println("Not Implemented");
-            }
-        }
+				switch (state) {
+					case START -> {
+						ctx.buffer.setLength(0);
 
-		return tokens;
+						if (Character.isWhitespace(chr)) {
+							ctx.consume();
+							continue;
+						}
+
+						if (chr == '#') {
+							ctx.consume();
+							state = DFANode.HASH;
+						}
+
+						if (chr == ',') {
+							ctx.consume();
+							state = DFANode.COMMA;
+						}
+
+						if (chr == ']') {
+							ctx.consume();
+							state = DFANode.RBRACKET;
+						}
+
+						if (chr == '[') {
+							ctx.consume();
+							state = DFANode.LBRACKET;
+						}
+
+						if (chr == '}') {
+							ctx.consume();
+							state = DFANode.RBRACE;
+						}
+
+						if (chr == '{') {
+							ctx.consume();
+							state = DFANode.LBRACE;
+						}
+
+						if (chr == '=') {
+							ctx.consume();
+							state = DFANode.ASSIGN;
+						}
+
+						if (List.of('<', '>').contains(chr)) {
+							ctx.consume();
+							state = DFANode.RELOP;
+						}
+
+						if (List.of('/', '+', '-', '*').contains(chr)) {
+							ctx.consume();
+							state = DFANode.MATHOP;
+						}
+
+						if (chr == ';') {
+							ctx.consume();
+							state = DFANode.SEMICOLON;
+						}
+
+						if (chr == '.') {
+							ctx.consume();
+							state = DFANode.DIGIT;
+						}
+
+						if (Character.isDigit(chr)) {
+							ctx.consume();
+							state = DFANode.NUMBER;
+						}
+
+						if (Character.isLetter(chr)) {
+							ctx.consume();
+							state = DFANode.ID_OR_KEYWORD;
+						}
+
+						if (chr == ':') {
+							ctx.consume();
+							state = DFANode.COLON;
+						}
+
+						if (chr == '!') {
+							ctx.consume();
+							state = DFANode.BANG;
+						}
+
+						if (chr == '"') {
+							ctx.consume();
+							state = DFANode.QUOTE;
+						}
+
+						if (chr == '\0') {
+							ctx.consume(); // end of stream. eat and ignore
+							continue;
+						}
+
+						if (state == DFANode.START) { // none were matched
+							throw new JottTokenizationException(
+									JottTokenizationException.Cause.UNEXPECTED_CHARACTER,
+									ctx
+							);
+						}
+
+					}
+
+					case HASH -> {
+						if (chr == '\n') {
+							state = DFANode.START;
+						}
+
+						ctx.consume();
+					}
+
+					case COMMA -> {
+						ctx.commit(TokenType.COMMA);
+						state = DFANode.START;
+					}
+
+					case RBRACKET -> {
+						ctx.commit(TokenType.R_BRACKET);
+						state = DFANode.START;
+					}
+
+					case LBRACKET -> {
+						ctx.commit(TokenType.L_BRACKET);
+						state = DFANode.START;
+					}
+
+					case RBRACE -> {
+						ctx.commit(TokenType.R_BRACE);
+						state = DFANode.START;
+					}
+
+					case LBRACE -> {
+						ctx.commit(TokenType.L_BRACE);
+						state = DFANode.START;
+					}
+
+					case ASSIGN -> {
+						if (chr == '=') {
+							ctx.consume();
+							state = DFANode.ASSIGN_RELOP;
+						} else {
+							ctx.commit(TokenType.ASSIGN);
+							state = DFANode.START;
+						}
+					}
+
+					case ASSIGN_RELOP, BANG_RELOP -> {
+						ctx.commit(TokenType.REL_OP);
+						state = DFANode.START;
+					}
+
+					case RELOP -> {
+						if (chr == '=') {
+							ctx.consume();
+							state = DFANode.ASSIGN_RELOP;
+						} else {
+							ctx.commit(TokenType.REL_OP);
+							state = DFANode.START;
+						}
+					}
+
+					case MATHOP -> {
+						ctx.commit(TokenType.MATH_OP);
+						state = DFANode.START;
+					}
+
+					case SEMICOLON -> {
+						ctx.commit(TokenType.SEMICOLON);
+						state = DFANode.START;
+					}
+
+					case DIGIT -> {
+						if (Character.isDigit(chr)) {
+							ctx.consume();
+							state = DFANode.NUMBER_NUMBER;
+						} else {
+							throw new JottTokenizationException(
+									JottTokenizationException.Cause.UNEXPECTED_CHARACTER,
+									ctx
+							);
+						}
+					}
+
+					case NUMBER -> {
+						if (Character.isDigit(chr)) {
+							ctx.consume();
+						} else if (chr == '.') {
+							ctx.consume();
+							state = DFANode.NUMBER_NUMBER;
+						} else {
+							ctx.commit(TokenType.NUMBER);
+							state = DFANode.START;
+						}
+					}
+
+					case NUMBER_NUMBER -> {
+						if (Character.isDigit(chr)) {
+							ctx.consume();
+						} else {
+							ctx.commit(TokenType.NUMBER);
+							state = DFANode.START;
+						}
+					}
+
+					case ID_OR_KEYWORD -> {
+						if (Character.isDigit(chr) || Character.isLetter(chr)) {
+							ctx.consume();
+						} else {
+							ctx.commit(TokenType.ID_KEYWORD);
+							state = DFANode.START;
+						}
+					}
+					
+
+					default -> {
+						// TODO: remove this `default` branch once all cases are implemented
+						System.err.println("Not Implemented");
+						state = DFANode.START; // discard and start again
+					}
+				}
+			}
+		} catch (JottTokenizationException exception) {
+			System.err.println(exception.getMessage());
+			return null;
+		}
+
+		return ctx.tokens;
 	}
 }
