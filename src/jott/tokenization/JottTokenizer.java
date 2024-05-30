@@ -46,11 +46,11 @@ public class JottTokenizer {
      * @return an ArrayList of Jott Tokens
      */
     public static ArrayList<Token> tokenize(String filename) {
-		JottTokenizerContext ctx = new JottTokenizerContext(filename);
-
 		DFANode state = DFANode.START;
 
 		try {
+			JottTokenizerContext ctx = new JottTokenizerContext(filename);
+
 			while (!ctx.isDone()) {
 				Character chr = ctx.peekNext();
 
@@ -266,7 +266,6 @@ public class JottTokenizer {
 							state = DFANode.START;
 						}
 					}
-					
 
 					default -> {
 						// TODO: remove this `default` branch once all cases are implemented
@@ -275,11 +274,11 @@ public class JottTokenizer {
 					}
 				}
 			}
+
+			return ctx.tokens;
 		} catch (JottTokenizationException exception) {
 			System.err.println(exception.getMessage());
 			return null;
 		}
-
-		return ctx.tokens;
 	}
 }
