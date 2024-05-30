@@ -268,19 +268,35 @@ public class JottTokenizer {
 					}
 
 					case COLON -> {
-						ctx.commit(TokenType.COLON);
-						state = DFANode.START;
+						if(chr.equals(":")){
+							ctx.commit(TokenType.FC_HEADER);
+							state = DFANode.START;
+						} else {
+							ctx.commit(TokenType.COLON);
+							state = DFANode.START;
+						}
 					}
 
 					case BANG -> {
 						if(chr.equals("=")){
-							ctx.consume();
-							state = DFANode.BANG_RELOP;
+							ctx.commit(TokenType.NOT_EQUALS);
+							state = DFANode.START;
+
 						} else{
 							throw new JottTokenizationException(
 								JottTokenizationException.Cause.UNEXPECTED_CHARACTER,
 									ctx
 							);
+						}
+					}
+
+					case QUOTE -> {
+						if(Character.isDigit(chr) || Character.isLetter(chr) || Character.isSpaceChar(chr)){
+							ctx.consume();
+							state = DFANode.QUOTE;
+						} else if(chr.equals('"')){
+							ctx.commit(TokenType.STRING);
+							state = DFANode.START;
 						}
 					}
 
