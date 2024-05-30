@@ -267,6 +267,23 @@ public class JottTokenizer {
 						}
 					}
 
+					case COLON -> {
+						ctx.commit(TokenType.COLON);
+						state = DFANode.START;
+					}
+
+					case BANG -> {
+						if(chr.equals("=")){
+							ctx.consume();
+							state = DFANode.BANG_RELOP;
+						} else{
+							throw new JottTokenizationException(
+								JottTokenizationException.Cause.UNEXPECTED_CHARACTER,
+									ctx
+							);
+						}
+					}
+
 					default -> {
 						// TODO: remove this `default` branch once all cases are implemented
 						System.err.println("Not Implemented");
