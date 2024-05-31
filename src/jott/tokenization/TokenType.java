@@ -16,7 +16,6 @@ public enum TokenType {
     NUMBER,
     ID_KEYWORD,
     COLON,
-    NOT_EQUALS,
     STRING,
 	FC_HEADER;
 }
