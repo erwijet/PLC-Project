@@ -12,7 +12,7 @@ public class JottTokenizationException extends Exception {
                 Character chr = ctx.peekNext();
                 String current = chr == null || chr == '\0' ? "EOF" : chr.toString();
 
-                return String.format("Unexpected character '%s' on line %s", current, ctx.lineNumber);
+                return String.format("Syntax Error:\nUnexpected character '%s' on line %s\n%s:%s", current, ctx.lineNumber, ctx.filename, ctx.lineNumber);
             }
             case OPEN_SOURCE_FILE -> {
                 return String.format("Failed to open the requested source file: '%s'", ctx.filename);

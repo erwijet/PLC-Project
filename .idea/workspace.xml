@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/tokenization/JottTokenizationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/tokenization/JottTokenizationException.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,11 +119,22 @@
       <workItem from="1717021822783" duration="91000" />
       <workItem from="1717021937919" duration="10498000" />
       <workItem from="1717126777691" duration="647000" />
-      <workItem from="1717167586944" duration="337000" />
+      <workItem from="1717167586944" duration="2055000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
