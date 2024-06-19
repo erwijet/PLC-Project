@@ -6,6 +6,7 @@ package jott; /**
  */
 
 import jott.tokenization.Token;
+import jott.tokenization.TokenType;
 
 import java.util.ArrayList;
 
@@ -19,5 +20,6 @@ public class JottParser {
      */
     public static JottTree parse(ArrayList<Token> tokens){
 		return null;
+
     }
 }
