@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="">
+    <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="whileloopnode maybe done?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyStmtNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/BoolNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/BoolNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/WhileLoopNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/WhileLoopNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ElseIfNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ElseIfNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ElseNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ElseNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/IfStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/IfStmtNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,6 +152,15 @@
       <workItem from="1718769640824" duration="1046000" />
       <workItem from="1718830815037" duration="10643000" />
     </task>
+    <task id="LOCAL-00001" summary="whileloopnode maybe done?">
+      <option name="closed" value="true" />
+      <created>1718854736720</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718854736720</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,5 +176,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="whileloopnode maybe done?" />
+    <option name="LAST_COMMIT_MESSAGE" value="whileloopnode maybe done?" />
   </component>
 </project>
