@@ -15,6 +15,6 @@ public class RelopNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return null;
+        return token.getToken();
     }
 }

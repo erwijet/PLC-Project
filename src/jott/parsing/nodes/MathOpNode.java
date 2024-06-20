@@ -15,6 +15,6 @@ public class MathOpNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return null;
+        return token.getToken();
     }
 }

@@ -24,6 +24,8 @@ public class FuncReturnNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return null;
+        if(type != null)
+            return type.convertToJott();
+        return "Void";
     }
 }

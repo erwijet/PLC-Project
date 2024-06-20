@@ -9,6 +9,7 @@ public class VarDeclNode extends JottNode {
     Token identifier;
 
     public static VarDeclNode parse(ParseContext ctx) {
+        // < var_dec > -> < type > < id >;
         VarDeclNode node = new VarDeclNode();
         node.type = TypeNode.parse(ctx);
         node.identifier = ctx.eat(TokenType.ID_KEYWORD);
@@ -18,6 +19,6 @@ public class VarDeclNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return null;
+        return type.convertToJott() + identifier.getToken() + ";";
     }
 }
