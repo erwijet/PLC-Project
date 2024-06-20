@@ -3,12 +3,20 @@ package jott.parsing.nodes;
 import jott.parsing.ParseContext;
 import jott.tokenization.TokenType;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+
 public class IfStmtNode extends JottNode {
     private ExprNode condition;
     private BodyStmtNode body;
+    private List<ElseIfNode> elseif;
+    private ElseNode els;
 
     public static IfStmtNode parse(ParseContext ctx){
+        // < if_stmt > -> If [ < expr >]{ < body >} < elseif_lst >*< else >
         IfStmtNode node = new IfStmtNode(); // not actually sure if making a node is needed?
+        LinkedList<ElseIfNode> elseif = new LinkedList<>();
         ctx.eat(TokenType.ID_KEYWORD, "If");
         ctx.eat(TokenType.L_BRACKET);
         node.condition = ExprNode.parse(ctx);
@@ -16,11 +24,17 @@ public class IfStmtNode extends JottNode {
         ctx.eat(TokenType.L_BRACE);
         node.body = BodyStmtNode.parse(ctx);
         ctx.eat(TokenType.R_BRACKET);
+        while(Objects.equals(ctx.peekNextStr(), "Elseif")) // if elseif exists, add them
+            node.elseif.add(ElseIfNode.parse(ctx));
+        node.els = ElseNode.parse(ctx); // else
         return node;
     }
 
     @Override
     public String convertToJott() {
-        return "If[" + condition.convertToJott() + "]{\n" + body.convertToJott() + "\n}";
+        String str = "If[" + condition.convertToJott() + "]{\n" + body.convertToJott() + "\n}";
+        for(ElseIfNode elseif : elseif) str += elseif.convertToJott();
+        str += els.convertToJott();
+        return str;
     }
 }

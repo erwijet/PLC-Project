@@ -8,6 +8,7 @@ public class ElseIfNode extends JottNode {
     private BodyStmtNode body;
 
     public static ElseIfNode parse(ParseContext ctx){
+        // < elseif > -> Elseif [ < expr >]{ < body >}
         ElseIfNode node = new ElseIfNode(); // not actually sure if making a node is needed?
         ctx.eat(TokenType.ID_KEYWORD, "Elseif");
         ctx.eat(TokenType.L_BRACKET);

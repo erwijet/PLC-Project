@@ -8,6 +8,7 @@ public class WhileLoopNode extends JottNode {
     private BodyStmtNode body;
 
     public static WhileLoopNode parse(ParseContext ctx){
+        // < while_loop > -> While [ < expr >]{ < body >}
         WhileLoopNode node = new WhileLoopNode(); // not actually sure if making a node is needed?
         ctx.eat(TokenType.ID_KEYWORD, "While");
         ctx.eat(TokenType.L_BRACKET);
