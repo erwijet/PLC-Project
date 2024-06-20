@@ -14,6 +14,11 @@ public class ExprNode extends JottNode {
         ExprNode node = new ExprNode();
         node.children = new LinkedList<>();
 
+        if (ctx.peekNextType() == TokenType.ID_KEYWORD &&
+                (ctx.peekNextStr().equals("True") || ctx.peekNextStr().equals("False"))) {
+            node.children.add(BoolNode.parse(ctx))
+        }
+
         if (ctx.peekNextType() == TokenType.ID_KEYWORD || ctx.peekNextType() == TokenType.NUMBER) {
             // handle <operand>
 
@@ -30,7 +35,9 @@ public class ExprNode extends JottNode {
             }
         } else if (ctx.peekNextType() == TokenType.STRING) {
             // handle <str_lit>
-            node.children.add( )
+            node.children.add(StrLiteralNode.parse(ctx));
+        } else if (ctx.peekNextType() == TokenType.ID_KEYWORD) {
+            // handle <boolean>
         }
 
         // operand
