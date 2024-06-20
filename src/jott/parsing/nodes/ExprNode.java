@@ -16,10 +16,9 @@ public class ExprNode extends JottNode {
 
         if (ctx.peekNextType() == TokenType.ID_KEYWORD &&
                 (ctx.peekNextStr().equals("True") || ctx.peekNextStr().equals("False"))) {
-            node.children.add(BoolNode.parse(ctx))
-        }
-
-        if (ctx.peekNextType() == TokenType.ID_KEYWORD || ctx.peekNextType() == TokenType.NUMBER) {
+            // handle <bool>
+            node.children.add(BoolNode.parse(ctx));
+        } else if (ctx.peekNextType() == TokenType.ID_KEYWORD || ctx.peekNextType() == TokenType.NUMBER) {
             // handle <operand>
 
             node.children.add(OperandNode.parse(ctx));
@@ -36,13 +35,9 @@ public class ExprNode extends JottNode {
         } else if (ctx.peekNextType() == TokenType.STRING) {
             // handle <str_lit>
             node.children.add(StrLiteralNode.parse(ctx));
-        } else if (ctx.peekNextType() == TokenType.ID_KEYWORD) {
-            // handle <boolean>
         }
 
-        // operand
-
-
+        throw new RuntimeException("SyntaxError: unexpected token '" + ctx.peekNextStr() + "' in expression");
     }
 
     @Override

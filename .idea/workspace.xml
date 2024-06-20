@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="whileloopnode maybe done?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/BoolNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/BoolNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
