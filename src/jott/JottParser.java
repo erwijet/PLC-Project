@@ -2,7 +2,7 @@ package jott; /**
  * This class is responsible for paring Jott Tokens
  * into a Jott parse tree.
  *
- * @author
+ * @author Tyler Holewinski
  */
 
 import jott.tokenization.Token;

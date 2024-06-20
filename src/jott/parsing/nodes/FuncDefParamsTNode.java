@@ -1,0 +1,26 @@
+package jott.parsing.nodes;
+
+import jott.parsing.ParseContext;
+import jott.tokenization.Token;
+import jott.tokenization.TokenType;
+
+public class FuncDefParamsTNode extends JottNode {
+    Token funcName;
+    TypeNode returnType;
+
+    static FuncDefParamsTNode parse(ParseContext ctx) {
+        FuncDefParamsTNode node = new FuncDefParamsTNode();
+
+        ctx.eat(TokenType.COMMA);
+        node.funcName = ctx.eat(TokenType.ID_KEYWORD);
+        ctx.eat(TokenType.COLON);
+        node.returnType = TypeNode.parse(ctx);
+
+        return node;
+    }
+
+    @Override
+    public String convertToJott() {
+        return null;
+    }
+}
