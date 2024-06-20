@@ -12,6 +12,7 @@ public class FuncDefNode extends JottNode {
     private FuncBodyNode body;
 
     public static FuncDefNode parse(ParseContext ctx) {
+        // < function_def > -> Def <id >[ func_def_params ]: < function_return >{ < f_body >
         FuncDefNode node = new FuncDefNode();
 
         ctx.eat(TokenType.ID_KEYWORD, "Def");
@@ -27,4 +28,8 @@ public class FuncDefNode extends JottNode {
         while ()
     }
 
+    @Override
+    public String convertToJott() {
+        return "Def " + funcId.getToken() + "[" + params.convertToJott() + "]: " + funcReturn.convertToJott() + "{\n" + body.convertToJott() + "\n}";
+    }
 }

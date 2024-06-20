@@ -9,6 +9,7 @@ public class FuncDefParamsTNode extends JottNode {
     TypeNode returnType;
 
     static FuncDefParamsTNode parse(ParseContext ctx) {
+        // < func_def_params_t > -> ,<id >: < type >
         FuncDefParamsTNode node = new FuncDefParamsTNode();
 
         ctx.eat(TokenType.COMMA);
@@ -21,6 +22,6 @@ public class FuncDefParamsTNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return "," + funcName.getToken() + ":" + returnType.convertToJott();
+        return ", " + funcName.getToken() + ":" + returnType.convertToJott();
     }
 }

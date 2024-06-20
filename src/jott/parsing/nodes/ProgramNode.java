@@ -10,6 +10,7 @@ public class ProgramNode extends JottNode {
     List<FuncDefNode> functions;
 
     public static ProgramNode parse(ParseContext ctx){
+        // < program > -> < function_def >* <EOF >
         ProgramNode node = new ProgramNode();
         node.functions = new LinkedList<>();
         while(ctx.peekNextType() == TokenType.ID_KEYWORD)

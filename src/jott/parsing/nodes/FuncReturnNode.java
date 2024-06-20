@@ -12,6 +12,7 @@ public class FuncReturnNode extends JottNode {
     }
 
     public static FuncReturnNode parse(ParseContext ctx) {
+        // < function_return > -> < type > | Void
         FuncReturnNode node = new FuncReturnNode();
 
         if (Objects.equals(ctx.peekNextStr(), "Void")) {

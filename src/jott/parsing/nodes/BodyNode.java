@@ -12,6 +12,7 @@ public class BodyNode extends JottNode {
     ReturnStmtNode returnStmt;
 
     public static BodyNode parse(ParseContext ctx) {
+        // < body > -> < body_stmt >* < return_stmt >
         BodyNode node = new BodyNode();
         node.bodyStmts = new LinkedList<>();
 
@@ -25,6 +26,8 @@ public class BodyNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return null;
+        String str = "";
+        for (BodyStmtNode stmt : bodyStmts) str += stmt.convertToJott() + " ";
+        return str + returnStmt.convertToJott();
     }
 }
