@@ -1,4 +1,13 @@
 package jott.parsing.nodes;
 
-public class FuncBodyNode {
+import java.util.List;
+
+public class FuncBodyNode extends JottNode {
+    List<VarDeclNode> varDecls;
+    BodyNode body;
+
+    @Override
+    public String convertToJott() {
+        return null;
+    }
 }

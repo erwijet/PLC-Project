@@ -1,9 +1,28 @@
 package jott.parsing.nodes;
 
 import jott.JottTree;
+import jott.parsing.ParseContext;
 import jott.tokenization.TokenType;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class BodyNode extends JottNode {
+    List<BodyStmtNode> bodyStmts;
+    ReturnStmtNode returnStmt;
+
+    public static BodyNode parse(ParseContext ctx) {
+        BodyNode node = new BodyNode();
+        node.bodyStmts = new LinkedList<>();
+
+        while (true) {
+            if (ctx.peekNextType() == TokenType.COLON) {
+                node.bodyStmts.add(FuncCallNode.parse(ctx))
+            }
+        }
+
+    }
+
     @Override
     public String convertToJott() {
         return null;

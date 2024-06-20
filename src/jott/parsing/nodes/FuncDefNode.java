@@ -8,7 +8,7 @@ import jott.tokenization.TokenType;
 public class FuncDefNode extends JottNode {
     private Token funcId;
     private FuncDefParamsNode params;
-    private FuncReturnNode returnType;
+    private FuncReturnNode funcReturn;
     private FuncBodyNode body;
 
     public static FuncDefNode parse(ParseContext ctx) {
@@ -16,8 +16,13 @@ public class FuncDefNode extends JottNode {
 
         ctx.eat(TokenType.ID_KEYWORD, "Def");
         node.funcId = ctx.eat(TokenType.ID_KEYWORD);
+        ctx.eat(TokenType.L_BRACKET);
+        node.params = FuncDefParamsNode.parse(ctx);
         ctx.eat(TokenType.R_BRACKET);
-        node
+        ctx.eat(TokenType.COLON);
+        node.funcReturn = FuncReturnNode.parse(ctx);
+        ctx.eat(TokenType.L_BRACE);
+        node.body =
 
         while ()
     }
