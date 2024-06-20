@@ -5,7 +5,7 @@ import jott.parsing.ParseContext;
 
 public class AssignmentNode extends JottNode {
 
-    static AssignmentNode create(ParseContext ctx) {
+    static AssignmentNode parse(ParseContext ctx) {
 
     }
 
