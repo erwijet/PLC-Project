@@ -18,6 +18,7 @@ public class ExprNode extends JottNode {
                 (ctx.peekNextStr().equals("True") || ctx.peekNextStr().equals("False"))) {
             // handle <bool>
             node.children.add(BoolNode.parse(ctx));
+            return node;
         } else if (ctx.peekNextType() == TokenType.ID_KEYWORD || ctx.peekNextType() == TokenType.NUMBER) {
             // handle <operand>
 
@@ -32,9 +33,11 @@ public class ExprNode extends JottNode {
                 node.children.add(MathOpNode.parse(ctx));
                 node.children.add(OperandNode.parse(ctx));
             }
+            return node;
         } else if (ctx.peekNextType() == TokenType.STRING) {
             // handle <str_lit>
             node.children.add(StrLiteralNode.parse(ctx));
+            return node;
         }
 
         throw new RuntimeException("SyntaxError: unexpected token '" + ctx.peekNextStr() + "' in expression");
