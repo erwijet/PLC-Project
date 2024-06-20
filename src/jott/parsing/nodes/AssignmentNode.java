@@ -9,7 +9,8 @@ public class AssignmentNode extends JottNode {
     private Token id;
     private ExprNode exp;
 
-    static AssignmentNode parse(ParseContext ctx) {
+    public static AssignmentNode parse(ParseContext ctx) {
+        // < asmt > -> <id >= < expr >;
         AssignmentNode node = new AssignmentNode();
         node.id = ctx.eat(TokenType.ID_KEYWORD);
         ctx.eat(TokenType.ASSIGN);
