@@ -8,6 +8,12 @@ import java.util.Objects;
 
 public class BoolNode extends JottNode {
     Token token;
+    Variant variant;
+
+    enum Variant {
+        TRUE,
+        FALSE
+    }
 
     public static BoolNode parse(ParseContext ctx) {
         BoolNode node = new BoolNode();
@@ -15,9 +21,11 @@ public class BoolNode extends JottNode {
         switch (ctx.peekNextStr()) {
             case "True" -> {
                 node.token = ctx.eat(TokenType.ID_KEYWORD, "True");
+                node.variant = Variant.TRUE;
             }
             case "False" -> {
                 node.token = ctx.eat(TokenType.ID_KEYWORD, "False");
+                node.variant = Variant.FALSE;
             }
             default -> {
                 throw new RuntimeException("SyntaxError: expected 'True' or 'False', found " + ctx.peekNextStr());
@@ -29,6 +37,9 @@ public class BoolNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return ""; // for now
+        return switch (this.variant) {
+            case TRUE -> "True";
+            case FALSE ->  "False";
+        };
     }
 }

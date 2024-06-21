@@ -1,11 +1,13 @@
 package jott.parsing.nodes;
 
+import jott.JottTree;
 import jott.parsing.ParseContext;
 import jott.tokenization.TokenType;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ParamsNode extends JottNode {
     ExprNode expr;
@@ -25,6 +27,9 @@ public class ParamsNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return null;
+        var ret = new StringBuilder();
+        ret.append(expr.convertToJott());
+        tail.stream().map(JottTree::convertToJott).forEach(ret::append);
+        return ret.toString();
     }
 }

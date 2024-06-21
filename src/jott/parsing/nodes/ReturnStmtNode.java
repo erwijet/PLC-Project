@@ -16,6 +16,6 @@ public class ReturnStmtNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return null;
+        return expr.convertToJott();
     }
 }

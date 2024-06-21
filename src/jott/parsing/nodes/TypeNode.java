@@ -47,6 +47,6 @@ public class TypeNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return null;
+        return token.getToken();
     }
 }

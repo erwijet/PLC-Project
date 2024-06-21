@@ -23,6 +23,9 @@ public class FuncBodyNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return null;
+        var ret = new StringBuilder();
+        varDecls.forEach(it -> ret.append(it.convertToJott()).append("\n"));
+        ret.append(body.convertToJott());
+        return ret.toString();
     }
 }

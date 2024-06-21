@@ -1,10 +1,12 @@
 package jott.parsing.nodes;
 
+import jott.JottTree;
 import jott.parsing.ParseContext;
 import jott.tokenization.TokenType;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ExprNode extends JottNode {
     List<JottNode> children;
@@ -51,6 +53,9 @@ public class ExprNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return null;
+        return children
+                .stream()
+                .map(JottTree::convertToJott)
+                .collect(Collectors.joining());
     }
 }

@@ -15,6 +15,6 @@ public class ParamsTNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return null;
+        return "," + expr.convertToJott();
     }
 }

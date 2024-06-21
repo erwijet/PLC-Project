@@ -34,7 +34,8 @@ public class ParseContext {
             curIdx++;
             return curToken;
         } else {
-            throw new RuntimeException("Syntax error: Expected " + expectedType + " but found " + curToken.getTokenType());
+            throw new RuntimeException("SyntaxError: Expected " + expectedType + " but found " + curToken.getTokenType()
+                + " (at line " + curToken.getLineNum() + ")");
         }
     }
 

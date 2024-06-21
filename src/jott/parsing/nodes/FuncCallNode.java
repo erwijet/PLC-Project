@@ -17,9 +17,9 @@ public class FuncCallNode extends JottNode {
         FuncCallNode node = new FuncCallNode();
         ctx.eat(TokenType.FC_HEADER);
         node.name = ctx.eat(TokenType.ID_KEYWORD);
-        ctx.eat(TokenType.L_BRACE);
+        ctx.eat(TokenType.L_BRACKET);
         node.params = ParamsNode.parse(ctx);
-        ctx.eat(TokenType.R_BRACE);
+        ctx.eat(TokenType.R_BRACKET);
         return node;
     }
 

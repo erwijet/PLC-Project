@@ -12,13 +12,13 @@ public class FuncDefParamsNode extends JottNode {
     Token paramName;
     TypeNode paramType;
     List<FuncDefParamsTNode> tail;
-    Boolean empty;
+    boolean isEmpty = true;
 
     static FuncDefParamsNode parse(ParseContext ctx) {
         // < func_def_params > -> <id >: < type > < function_def_params_t >* | empty
         FuncDefParamsNode node = new FuncDefParamsNode();
         if(ctx.peekNextType() == TokenType.ID_KEYWORD) {
-            node.empty = Boolean.FALSE;
+            node.isEmpty = false;
             node.paramName = ctx.eat(TokenType.ID_KEYWORD);
             ctx.eat(TokenType.COLON);
             node.paramType = TypeNode.parse(ctx);
@@ -28,18 +28,18 @@ public class FuncDefParamsNode extends JottNode {
                 node.tail.add(FuncDefParamsTNode.parse(ctx));
             }
         }
-        node.empty = Boolean.TRUE;
         return node;
 
     }
 
     @Override
     public String convertToJott() {
-        if(!empty){
-            String str = paramName.getToken() + ": " + paramType.convertToJott();
-            for(FuncDefParamsTNode t: tail) str += t.convertToJott();
-            return str;
+        if (!isEmpty) {
+            StringBuilder str = new StringBuilder(paramName.getToken() + ": " + paramType.convertToJott());
+            for (FuncDefParamsTNode t: tail) str.append(t.convertToJott());
+            return str.toString();
         }
+
         return "";
     }
 }

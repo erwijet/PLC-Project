@@ -47,6 +47,6 @@ public class BodyStmtNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return ""; // for now
+        return stmt.convertToJott();
     }
 }
