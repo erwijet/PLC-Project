@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="whileloopnode maybe done?">
+      <change afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ParamsTNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/JottParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/JottParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/AssignmentNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/AssignmentNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyStmtNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncBodyNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncBodyNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncCallNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncCallNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/OperandNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/OperandNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ParamsNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ParamsNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ProgramNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ProgramNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/TypeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/TypeNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/VarDeclNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/VarDeclNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,29 +67,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.JottTokenizerTester.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/tyler/rit/plc/JottTranslater&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.JottParserTester.executor": "Run",
+    "Application.JottTokenizerTester.executor": "Run",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/tyler/rit/plc/JottTranslater",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="jott.parsing.nodes" />
@@ -150,6 +164,7 @@
       <workItem from="1717167586944" duration="2055000" />
       <workItem from="1718769640824" duration="1046000" />
       <workItem from="1718830815037" duration="12764000" />
+      <workItem from="1718941570400" duration="4563000" />
     </task>
     <task id="LOCAL-00001" summary="whileloopnode maybe done?">
       <option name="closed" value="true" />

@@ -14,13 +14,17 @@ public class ProgramNode extends JottNode {
         ProgramNode node = new ProgramNode();
         node.functions = new LinkedList<>();
         while(ctx.peekNextType() == TokenType.ID_KEYWORD)
-            node.functions.add(FuncDefNode.parse(ctx)); // this is assuming that in funcdefnode, it calls all the following nodes
+            node.functions.add(FuncDefNode.parse(ctx));
+
         return node;
     }
     @Override
     public String convertToJott() {
-        String func = "";
-        for (FuncDefNode function : functions) func += function.convertToJott() + "\n";
-        return func;
+        var ret = new StringBuilder();
+
+        for (FuncDefNode function : functions)
+            ret.append(function.convertToJott()).append("\n");
+
+        return ret.toString();
     }
 }

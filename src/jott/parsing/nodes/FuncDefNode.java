@@ -23,9 +23,10 @@ public class FuncDefNode extends JottNode {
         ctx.eat(TokenType.COLON);
         node.funcReturn = FuncReturnNode.parse(ctx);
         ctx.eat(TokenType.L_BRACE);
-        node.body =
+        node.body = FuncBodyNode.parse(ctx);
+        ctx.eat(TokenType.R_BRACE);
 
-        while ()
+        return node;
     }
 
     @Override

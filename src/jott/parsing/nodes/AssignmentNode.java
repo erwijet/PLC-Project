@@ -9,6 +9,10 @@ public class AssignmentNode extends JottNode {
     private Token id;
     private ExprNode exp;
 
+    public static boolean canParse(ParseContext ctx) {
+        return ctx.peekNextType() == TokenType.ID_KEYWORD;
+    }
+
     public static AssignmentNode parse(ParseContext ctx) {
         // < asmt > -> <id >= < expr >;
         AssignmentNode node = new AssignmentNode();

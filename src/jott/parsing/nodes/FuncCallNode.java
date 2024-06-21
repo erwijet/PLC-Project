@@ -8,6 +8,10 @@ public class FuncCallNode extends JottNode {
     private Token name;
     private ParamsNode params;
 
+    public static boolean canParse(ParseContext ctx) {
+        return ctx.peekNextType() == TokenType.FC_HEADER;
+    }
+
     public static FuncCallNode parse(ParseContext ctx){
         // < func_call > -> :: < id >[ < params >]
         FuncCallNode node = new FuncCallNode();

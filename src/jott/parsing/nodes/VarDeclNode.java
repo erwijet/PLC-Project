@@ -8,6 +8,10 @@ public class VarDeclNode extends JottNode {
     TypeNode type;
     Token identifier;
 
+    public static boolean canParse(ParseContext ctx) {
+        return TypeNode.canParse(ctx);
+    }
+
     public static VarDeclNode parse(ParseContext ctx) {
         // < var_dec > -> < type > < id >;
         VarDeclNode node = new VarDeclNode();

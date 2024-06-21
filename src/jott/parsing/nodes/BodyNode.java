@@ -16,12 +16,13 @@ public class BodyNode extends JottNode {
         BodyNode node = new BodyNode();
         node.bodyStmts = new LinkedList<>();
 
-        while (true) {
-            if (ctx.peekNextType() == TokenType.COLON) {
-                node.bodyStmts.add(FuncCallNode.parse(ctx))
-            }
+        while (BodyStmtNode.canParse(ctx)) {
+            node.bodyStmts.add(BodyStmtNode.parse(ctx));
         }
 
+        node.returnStmt = ReturnStmtNode.parse(ctx);
+
+        return node;
     }
 
     @Override

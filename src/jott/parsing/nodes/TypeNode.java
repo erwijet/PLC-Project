@@ -4,6 +4,8 @@ import jott.parsing.ParseContext;
 import jott.tokenization.Token;
 import jott.tokenization.TokenType;
 
+import java.util.List;
+
 public class TypeNode extends JottNode {
     enum Variant {
         DOUBLE,
@@ -14,6 +16,11 @@ public class TypeNode extends JottNode {
 
     private Variant variant;
     private Token token;
+
+    static boolean canParse(ParseContext ctx) {
+        return ctx.peekNextType() == TokenType.ID_KEYWORD
+                && List.of("Double", "Integer", "String", "Boolean").contains(ctx.peekNextStr());
+    }
 
     static TypeNode parse(ParseContext ctx) {
         TypeNode node = new TypeNode();

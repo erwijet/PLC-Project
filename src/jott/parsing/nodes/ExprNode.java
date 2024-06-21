@@ -9,6 +9,12 @@ import java.util.List;
 public class ExprNode extends JottNode {
     List<JottNode> children;
 
+    public static boolean canParse(ParseContext ctx) {
+        return OperandNode.canParse(ctx)
+            || ctx.peekNextType() == TokenType.NUMBER
+            || ctx.peekNextType() == TokenType.STRING;
+    }
+
     public static ExprNode parse(ParseContext ctx) {
         // <expr> -> <operand> | <operand><relop><operand> | <operand><mathop><operand> | <str_lit> | <bool>
         ExprNode node = new ExprNode();

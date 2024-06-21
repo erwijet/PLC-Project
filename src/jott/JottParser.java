@@ -5,6 +5,8 @@ package jott; /**
  * @author Tyler Holewinski
  */
 
+import jott.parsing.ParseContext;
+import jott.parsing.nodes.ProgramNode;
 import jott.tokenization.Token;
 import jott.tokenization.TokenType;
 
@@ -18,8 +20,7 @@ public class JottParser {
      * @return the root of the Jott Parse Tree represented by the tokens.
      *         or null upon an error in parsing.
      */
-    public static JottTree parse(ArrayList<Token> tokens){
-		return null;
-
+    public static JottTree parse(ArrayList<Token> tokens) {
+        return ProgramNode.parse(new ParseContext(tokens));
     }
 }
