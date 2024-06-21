@@ -17,6 +17,7 @@ public class VarDeclNode extends JottNode {
         VarDeclNode node = new VarDeclNode();
         node.type = TypeNode.parse(ctx);
         node.identifier = ctx.eat(TokenType.ID_KEYWORD);
+        ctx.eat(TokenType.SEMICOLON);
 
         return node;
     }

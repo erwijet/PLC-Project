@@ -5,17 +5,22 @@ import jott.tokenization.TokenType;
 
 public class ReturnStmtNode extends JottNode {
     ExprNode expr;
+    boolean isEmpty = true;
 
     public static ReturnStmtNode parse(ParseContext ctx) {
         ReturnStmtNode node = new ReturnStmtNode();
-        ctx.eat(TokenType.ID_KEYWORD, "Return");
-        node.expr = ExprNode.parse(ctx);
+
+        if (ctx.peekIs(TokenType.ID_KEYWORD, "Return")) {
+            ctx.eat(TokenType.ID_KEYWORD, "Return");
+            node.expr = ExprNode.parse(ctx);
+            node.isEmpty = false;
+        }
 
         return node;
     }
 
     @Override
     public String convertToJott() {
-        return expr.convertToJott();
+        return isEmpty ? "" : expr.convertToJott();
     }
 }

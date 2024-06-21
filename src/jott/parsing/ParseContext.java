@@ -16,20 +16,31 @@ public class ParseContext {
         this.curIdx = 0;
     }
 
-    public Token peekNext() {
-        return tokens.get(curIdx);
+    private Token peekNext() {
+        if (curIdx < tokens.size())
+            return tokens.get(curIdx);
+        else return null;
     }
 
     public String peekNextStr() {
-        return peekNext().getToken();
+        var next = peekNext();
+        return next == null ? null : next.getToken();
     }
 
     public TokenType peekNextType() {
-        return peekNext().getTokenType();
+        var next = peekNext();
+        return next == null ? null : next.getTokenType();
+    }
+
+    public boolean peekIs(TokenType type, String str) {
+        return peekNextType() == type && Objects.equals(peekNextStr(), str);
     }
 
     public Token eat(TokenType expectedType) {
         Token curToken = peekNext();
+        if (curToken == null)
+            throw new RuntimeException("SyntaxError: Unexpected EOF, expected: " + expectedType);
+
         if (curToken.getTokenType() == expectedType) {
             curIdx++;
             return curToken;

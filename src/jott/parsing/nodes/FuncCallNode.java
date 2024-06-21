@@ -20,11 +20,12 @@ public class FuncCallNode extends JottNode {
         ctx.eat(TokenType.L_BRACKET);
         node.params = ParamsNode.parse(ctx);
         ctx.eat(TokenType.R_BRACKET);
+        ctx.eat(TokenType.SEMICOLON);
         return node;
     }
 
     @Override
     public String convertToJott() {
-        return "::" + name.getToken() + "[" + params.convertToJott() + "]";
+        return "::" + name.getToken() + "[" + params.convertToJott() + "];";
     }
 }
