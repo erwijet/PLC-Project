@@ -13,6 +13,7 @@ public class ReturnStmtNode extends JottNode {
         if (ctx.peekIs(TokenType.ID_KEYWORD, "Return")) {
             ctx.eat(TokenType.ID_KEYWORD, "Return");
             node.expr = ExprNode.parse(ctx);
+            ctx.eat(TokenType.SEMICOLON);
             node.isEmpty = false;
         }
 
@@ -21,6 +22,6 @@ public class ReturnStmtNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return isEmpty ? "" : expr.convertToJott();
+        return isEmpty ? "" : "Return " + expr.convertToJott() + ";";
     }
 }

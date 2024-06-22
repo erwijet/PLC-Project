@@ -9,21 +9,21 @@ import java.util.Objects;
 
 public class IfStmtNode extends JottNode {
     private ExprNode condition;
-    private BodyStmtNode body;
+    private BodyNode body;
     private List<ElseIfNode> elseif;
     private ElseNode els;
 
     public static IfStmtNode parse(ParseContext ctx){
         // < if_stmt > -> If [ < expr >]{ < body >} < elseif_lst >*< else >
         IfStmtNode node = new IfStmtNode(); // not actually sure if making a node is needed?
-        LinkedList<ElseIfNode> elseif = new LinkedList<>();
+        node.elseif = new LinkedList<>();
         ctx.eat(TokenType.ID_KEYWORD, "If");
         ctx.eat(TokenType.L_BRACKET);
         node.condition = ExprNode.parse(ctx);
         ctx.eat(TokenType.R_BRACKET);
         ctx.eat(TokenType.L_BRACE);
-        node.body = BodyStmtNode.parse(ctx);
-        ctx.eat(TokenType.R_BRACKET);
+        node.body = BodyNode.parse(ctx);
+        ctx.eat(TokenType.R_BRACE);
         while(Objects.equals(ctx.peekNextStr(), "Elseif")) // if elseif exists, add them
             node.elseif.add(ElseIfNode.parse(ctx));
         node.els = ElseNode.parse(ctx); // else

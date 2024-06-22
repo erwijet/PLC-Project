@@ -13,8 +13,15 @@ public class ProgramNode extends JottNode {
         // < program > -> < function_def >* <EOF >
         ProgramNode node = new ProgramNode();
         node.functions = new LinkedList<>();
+
         while(ctx.peekNextType() == TokenType.ID_KEYWORD)
             node.functions.add(FuncDefNode.parse(ctx));
+
+        // expect EOF
+
+        if (ctx.peekNextType() != null) {
+            throw new RuntimeException("SyntaxError: Expected EOF, but found '" + ctx.peekNextStr() + "'");
+        }
 
         return node;
     }

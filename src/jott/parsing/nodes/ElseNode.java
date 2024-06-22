@@ -6,7 +6,7 @@ import jott.tokenization.TokenType;
 import java.util.Objects;
 
 public class ElseNode extends JottNode {
-    private BodyStmtNode body;
+    private BodyNode body;
     private Boolean empty;
 
     public static ElseNode parse(ParseContext ctx){
@@ -15,8 +15,8 @@ public class ElseNode extends JottNode {
         if(Objects.equals(ctx.peekNextStr(), "Else")){
             ctx.eat(TokenType.ID_KEYWORD, "Else");
             ctx.eat(TokenType.L_BRACE);
-            node.body = BodyStmtNode.parse(ctx);
-            ctx.eat(TokenType.R_BRACKET);
+            node.body = BodyNode.parse(ctx);
+            ctx.eat(TokenType.R_BRACE);
             node.empty = Boolean.FALSE;
             return node;
         }
@@ -26,7 +26,7 @@ public class ElseNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        if(empty)
+        if (!empty)
             return "Else{\n" + body.convertToJott() + "\n}";
         return "";
     }

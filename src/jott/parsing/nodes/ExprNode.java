@@ -27,7 +27,7 @@ public class ExprNode extends JottNode {
             // handle <bool>
             node.children.add(BoolNode.parse(ctx));
             return node;
-        } else if (ctx.peekNextType() == TokenType.ID_KEYWORD || ctx.peekNextType() == TokenType.NUMBER) {
+        } else if (OperandNode.canParse(ctx)) {
             // handle <operand>
 
             node.children.add(OperandNode.parse(ctx));

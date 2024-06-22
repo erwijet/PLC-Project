@@ -21,8 +21,10 @@ public class JottParser {
      *         or null upon an error in parsing.
      */
     public static JottTree parse(ArrayList<Token> tokens) {
+        ProgramNode ret = null;
+
         try {
-            var ret = ProgramNode.parse(new ParseContext(tokens));
+            ret = ProgramNode.parse(new ParseContext(tokens));
             return ret;
         } catch (Exception ex) {
             System.err.println(ex);

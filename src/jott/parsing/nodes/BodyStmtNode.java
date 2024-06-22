@@ -10,9 +10,9 @@ public class BodyStmtNode extends JottNode {
     JottNode stmt;
 
     public static boolean canParse(ParseContext ctx) {
-        return (ctx.peekNextType() == TokenType.ID_KEYWORD && List.of("If", "While").contains(ctx.peekNextStr()))
+        return ctx.peekNextStr() != null && !ctx.peekNextStr().equals("Return") && ((ctx.peekNextType() == TokenType.ID_KEYWORD && List.of("If", "While").contains(ctx.peekNextStr()))
             || AssignmentNode.canParse(ctx)
-            || FuncCallNode.canParse(ctx);
+            || FuncCallNode.canParse(ctx));
     }
 
     public static BodyStmtNode parse(ParseContext ctx) {
@@ -38,6 +38,7 @@ public class BodyStmtNode extends JottNode {
 
         if (FuncCallNode.canParse(ctx)) {
             node.stmt = FuncCallNode.parse(ctx);
+            ctx.eat(TokenType.SEMICOLON);
             return node;
         }
 
@@ -47,6 +48,13 @@ public class BodyStmtNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return stmt.convertToJott();
+        var ret = new StringBuilder();
+        ret.append(stmt.convertToJott());
+
+        if (stmt instanceof FuncCallNode) {
+            ret.append(";");
+        }
+
+        return ret.toString();
     }
 }

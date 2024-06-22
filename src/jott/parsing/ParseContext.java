@@ -45,8 +45,12 @@ public class ParseContext {
             curIdx++;
             return curToken;
         } else {
+            if (expectedType == TokenType.ASSIGN && curToken.getLineNum() == 9) {
+                System.out.println("pause");
+            }
+
             throw new RuntimeException("SyntaxError: Expected " + expectedType + " but found " + curToken.getTokenType()
-                + " (at line " + curToken.getLineNum() + ")");
+                + " (at line " + curToken.getLineNum() + ", file '" + curToken.getFilename() + "')");
         }
     }
 

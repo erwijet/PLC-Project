@@ -5,7 +5,7 @@ import jott.tokenization.TokenType;
 
 public class WhileLoopNode extends JottNode {
     private ExprNode condition;
-    private BodyStmtNode body;
+    private BodyNode body;
 
     public static WhileLoopNode parse(ParseContext ctx){
         // < while_loop > -> While [ < expr >]{ < body >}
@@ -15,8 +15,8 @@ public class WhileLoopNode extends JottNode {
         node.condition = ExprNode.parse(ctx);
         ctx.eat(TokenType.R_BRACKET);
         ctx.eat(TokenType.L_BRACE);
-        node.body = BodyStmtNode.parse(ctx);
-        ctx.eat(TokenType.R_BRACKET);
+        node.body = BodyNode.parse(ctx);
+        ctx.eat(TokenType.R_BRACE);
         return node;
     }
 
