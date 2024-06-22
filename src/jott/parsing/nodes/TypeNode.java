@@ -1,6 +1,7 @@
 package jott.parsing.nodes;
 
 import jott.parsing.ParseContext;
+import jott.parsing.ParseException;
 import jott.tokenization.Token;
 import jott.tokenization.TokenType;
 
@@ -39,7 +40,7 @@ public class TypeNode extends JottNode {
             case "Boolean" -> {
                 node.variant = Variant.BOOLEAN;
             }
-            default -> throw new RuntimeException("Expected any of 'Double', 'Integer', 'String', 'Boolean', found " + node.token.getToken() + " for Type");
+            default -> throw new ParseException(ParseException.Cause.SYNTAX, ctx, "Double, Integer, String, or Boolean");
         };
 
         return node;

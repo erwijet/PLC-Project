@@ -2,6 +2,7 @@ package jott.parsing.nodes;
 
 import jott.JottTree;
 import jott.parsing.ParseContext;
+import jott.parsing.ParseException;
 import jott.tokenization.TokenType;
 
 import java.util.List;
@@ -42,8 +43,7 @@ public class BodyStmtNode extends JottNode {
             return node;
         }
 
-        throw new RuntimeException(
-                "SyntaxError: Expected If block, While block, Assignment, or Function Call. Found: " + ctx.peekNextStr());
+        throw new ParseException(ParseException.Cause.SYNTAX, ctx, "If block, While block, or Function call");
     }
 
     @Override

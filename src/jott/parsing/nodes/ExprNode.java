@@ -2,6 +2,7 @@ package jott.parsing.nodes;
 
 import jott.JottTree;
 import jott.parsing.ParseContext;
+import jott.parsing.ParseException;
 import jott.tokenization.TokenType;
 
 import java.util.LinkedList;
@@ -48,7 +49,7 @@ public class ExprNode extends JottNode {
             return node;
         }
 
-        throw new RuntimeException("SyntaxError: unexpected token '" + ctx.peekNextStr() + "' in expression");
+        throw new ParseException(ParseException.Cause.SYNTAX, ctx, "identifier, operator, function call, or literal");
     }
 
     @Override

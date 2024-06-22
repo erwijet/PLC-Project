@@ -7,29 +7,35 @@ import java.util.List;
 import java.util.Objects;
 
 public class ParseContext {
-
     private List<Token> tokens;
     private int curIdx;
+
+    public Token getTrailingToken() {
+        return tokens.get(tokens.size() - 1);
+    }
 
     public ParseContext(List<Token> tokens) {
         this.tokens = tokens;
         this.curIdx = 0;
     }
 
-    private Token peekNext() {
-        if (curIdx < tokens.size())
-            return tokens.get(curIdx);
-        else return null;
+    public boolean isEOF() {
+        return tokens.size() <= curIdx;
+    }
+
+    public Token peekNext() {
+        if (isEOF()) return null;
+        return tokens.get(curIdx);
     }
 
     public String peekNextStr() {
-        var next = peekNext();
-        return next == null ? null : next.getToken();
+        if (isEOF()) return null;
+        return peekNext().getToken();
     }
 
     public TokenType peekNextType() {
-        var next = peekNext();
-        return next == null ? null : next.getTokenType();
+        if (isEOF()) return null;
+        return peekNext().getTokenType();
     }
 
     public boolean peekIs(TokenType type, String str) {
@@ -39,7 +45,7 @@ public class ParseContext {
     public Token eat(TokenType expectedType) {
         Token curToken = peekNext();
         if (curToken == null)
-            throw new RuntimeException("SyntaxError: Unexpected EOF, expected: " + expectedType);
+            throw new ParseException(ParseException.Cause.SYNTAX, this, expectedType);
 
         if (curToken.getTokenType() == expectedType) {
             curIdx++;
@@ -49,15 +55,14 @@ public class ParseContext {
                 System.out.println("pause");
             }
 
-            throw new RuntimeException("SyntaxError: Expected " + expectedType + " but found " + curToken.getTokenType()
-                + " (at line " + curToken.getLineNum() + ", file '" + curToken.getFilename() + "')");
+            throw new ParseException(ParseException.Cause.SYNTAX, this, expectedType);
         }
     }
 
     public Token eat(TokenType expectedType, String expectedStr) {
         Token token = eat(expectedType);
         if (!Objects.equals(token.getToken(), expectedStr)) {
-            throw new RuntimeException("Syntax error: Expected " + expectedStr + " but found " + expectedStr);
+            throw new ParseException(ParseException.Cause.SYNTAX, this, expectedStr);
         }
 
         return token;

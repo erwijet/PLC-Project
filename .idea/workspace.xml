@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="whileloopnode maybe done?">
+      <change afterPath="$PROJECT_DIR$/src/jott/parsing/ParseException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parserTestCases/parserTestTemp.jott" beforeDir="false" afterPath="$PROJECT_DIR$/parserTestCases/parserTestTemp.jott" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/JottParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/JottParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/ParseContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/ParseContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyStmtNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ElseNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ElseNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/BoolNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/BoolNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncCallNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncCallNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/IfStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/IfStmtNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ProgramNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ProgramNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/VarDeclNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/VarDeclNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/WhileLoopNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/WhileLoopNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/TypeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/TypeNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +79,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "project.propCompiler",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -162,7 +157,7 @@
       <workItem from="1718769640824" duration="1046000" />
       <workItem from="1718830815037" duration="12764000" />
       <workItem from="1718941570400" duration="4563000" />
-      <workItem from="1719019278112" duration="2992000" />
+      <workItem from="1719019278112" duration="6023000" />
     </task>
     <task id="LOCAL-00001" summary="whileloopnode maybe done?">
       <option name="closed" value="true" />
@@ -197,19 +192,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/jott/parsing/ParseContext.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/IfStmtNode.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/IfStmtNode.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="29" />
+          <url>file://$PROJECT_DIR$/src/jott/JottParser.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,6 +1,7 @@
 package jott.parsing.nodes;
 
 import jott.parsing.ParseContext;
+import jott.parsing.ParseException;
 import jott.tokenization.TokenType;
 
 import java.util.LinkedList;
@@ -19,8 +20,8 @@ public class ProgramNode extends JottNode {
 
         // expect EOF
 
-        if (ctx.peekNextType() != null) {
-            throw new RuntimeException("SyntaxError: Expected EOF, but found '" + ctx.peekNextStr() + "'");
+        if (!ctx.isEOF()) {
+            throw new ParseException(ParseException.Cause.UNUSED_TOKENS, ctx, null);
         }
 
         return node;

@@ -1,6 +1,7 @@
 package jott.parsing.nodes;
 
 import jott.parsing.ParseContext;
+import jott.parsing.ParseException;
 import jott.tokenization.Token;
 import jott.tokenization.TokenType;
 
@@ -28,7 +29,7 @@ public class BoolNode extends JottNode {
                 node.variant = Variant.FALSE;
             }
             default -> {
-                throw new RuntimeException("SyntaxError: expected 'True' or 'False', found " + ctx.peekNextStr());
+                throw new ParseException(ParseException.Cause.SYNTAX, ctx, "True or False");
             }
         }
 
