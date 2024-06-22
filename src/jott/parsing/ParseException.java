@@ -12,7 +12,7 @@ public class ParseException extends RuntimeException {
     private static String buildMessage(Cause cause, ParseContext ctx, Object expected) {
         switch (cause) {
             case SYNTAX -> {
-                if (ctx.isEOF()) return String.format("Syntax Error\nExpected %s but found EOF\n.%s:%s", expected.toString(), ctx.getTrailingToken().getFilename(), ctx.getTrailingToken().getLineNum());
+                if (ctx.isEOF()) return String.format("Syntax Error\nExpected %s but found EOF\n%s:%s", expected.toString(), ctx.getTrailingToken().getFilename(), ctx.getTrailingToken().getLineNum());
                 return String.format("Syntax Error\nExpected %s but found %s '%s'\n%s:%s", expected.toString(), ctx.peekNextType(), ctx.peekNextStr(), ctx.peekNext().getFilename(), ctx.peekNext().getLineNum());
             }
 

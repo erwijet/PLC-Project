@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="whileloopnode maybe done?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/JottParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/JottParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +151,7 @@
       <workItem from="1718769640824" duration="1046000" />
       <workItem from="1718830815037" duration="12764000" />
       <workItem from="1718941570400" duration="4563000" />
-      <workItem from="1719019278112" duration="6502000" />
+      <workItem from="1719019278112" duration="6676000" />
     </task>
     <task id="LOCAL-00001" summary="whileloopnode maybe done?">
       <option name="closed" value="true" />
