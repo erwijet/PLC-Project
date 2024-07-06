@@ -6,8 +6,8 @@ import jott.tokenization.TokenType;
 import java.util.Objects;
 
 public class ElseNode extends JottNode {
-    private BodyNode body;
-    private Boolean empty;
+    BodyNode body;
+    Boolean empty;
 
     public static ElseNode parse(ParseContext ctx){
         // < else > -> Else { < body >} | empty

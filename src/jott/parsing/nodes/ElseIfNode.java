@@ -4,8 +4,8 @@ import jott.parsing.ParseContext;
 import jott.tokenization.TokenType;
 
 public class ElseIfNode extends JottNode {
-    private ExprNode condition;
-    private BodyStmtNode body;
+    ExprNode condition;
+    BodyNode body;
 
     public static ElseIfNode parse(ParseContext ctx){
         // < elseif > -> Elseif [ < expr >]{ < body >}
@@ -15,7 +15,7 @@ public class ElseIfNode extends JottNode {
         node.condition = ExprNode.parse(ctx);
         ctx.eat(TokenType.R_BRACKET);
         ctx.eat(TokenType.L_BRACE);
-        node.body = BodyStmtNode.parse(ctx);
+        node.body = BodyNode.parse(ctx);
         ctx.eat(TokenType.R_BRACKET);
         return node;
     }

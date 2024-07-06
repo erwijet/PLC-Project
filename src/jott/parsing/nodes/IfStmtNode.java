@@ -37,4 +37,16 @@ public class IfStmtNode extends JottNode {
         str += els.convertToJott();
         return str;
     }
+
+    @Override
+    public boolean validateTree() { // not sure if this works or if it is most efficient, delete if needed
+        if(!body.returnStmt.isEmpty){
+            for(int i = 0; i < elseif.size(); i++)
+                if(elseif.get(i).body.returnStmt.isEmpty)
+                    return false;
+            if(!els.empty && els.body.returnStmt.isEmpty)
+                return false;
+        }
+        return true;
+    }
 }

@@ -24,10 +24,10 @@ public class Jott {
                 System.out.println("Error: input file " + input + " does not exist, is not a file, or is not readable.");
                 return;
             }
-            ArrayList<Token> tokens = JottTokenizer.tokenize(input);
-            JottTree tree = JottParser.parse(tokens);
+            ArrayList<Token> tokens = JottTokenizer.tokenize(input); // todo: may need try catch here
+            JottTree tree = JottParser.parse(tokens); // todo: prob need try catch here
             assert tree != null;
-            tree.validateTree();
+            tree.validateTree(); // todo: needs to run entire tree which it isnt set up for currently
             String code = "";
             if(language.equalsIgnoreCase("jott"))
                 code += tree.convertToJott();
