@@ -31,4 +31,12 @@ public class BodyNode extends JottNode {
         for (BodyStmtNode stmt : bodyStmts) str += stmt.convertToJott() + " ";
         return str + returnStmt.convertToJott();
     }
+
+    @Override
+    public boolean validateTree() {
+        for (BodyStmtNode stmt : bodyStmts)
+            if (!stmt.validateTree())
+                return false;
+        return true;
+    }
 }

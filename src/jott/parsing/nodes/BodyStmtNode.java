@@ -57,4 +57,9 @@ public class BodyStmtNode extends JottNode {
 
         return ret.toString();
     }
+
+    @Override
+    public boolean validateTree() {
+        return stmt.validateTree();
+    }
 }

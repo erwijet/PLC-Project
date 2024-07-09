@@ -27,23 +27,26 @@ public class Jott {
             ArrayList<Token> tokens = JottTokenizer.tokenize(input); // todo: may need try catch here
             JottTree tree = JottParser.parse(tokens); // todo: prob need try catch here
             assert tree != null;
-            tree.validateTree(); // todo: needs to run entire tree which it isnt set up for currently
-            String code = "";
-            if(language.equalsIgnoreCase("jott"))
-                code += tree.convertToJott();
-            else if(language.equalsIgnoreCase("java")) // todo: get proper class name
-                code += tree.convertToJava("");
-            else if(language.equalsIgnoreCase("python"))
-                code += tree.convertToPython();
-            else if(language.equalsIgnoreCase("c"))
-                code += tree.convertToC();
-            else { // invalid language
-                System.out.println("Error: Language " + language + " is not supported. Please use 'Jott', 'Java', 'Python', or 'C'");
-                return;
+            if(tree.validateTree()) { // todo: needs to run entire tree which it isnt set up for currently
+                String code = "";
+                if (language.equalsIgnoreCase("jott"))
+                    code += tree.convertToJott();
+                else if (language.equalsIgnoreCase("java")) // todo: get proper class name
+                    code += tree.convertToJava("");
+                else if (language.equalsIgnoreCase("python"))
+                    code += tree.convertToPython();
+                else if (language.equalsIgnoreCase("c"))
+                    code += tree.convertToC();
+                else { // invalid language
+                    System.out.println("Error: Language " + language + " is not supported. Please use 'Jott', 'Java', 'Python', or 'C'");
+                    return;
+                }
+                BufferedWriter writer = new BufferedWriter(new FileWriter(output));
+                writer.write(code);
+                writer.close();
             }
-            BufferedWriter writer = new BufferedWriter(new FileWriter(output));
-            writer.write(code);
-            writer.close();
+            else
+                System.out.println("Invalid tree");
         }
         catch (IOException e){
             System.out.println("Error: output file " + output + "is not a valid file or is not readable/writeable.");

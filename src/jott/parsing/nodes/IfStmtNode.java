@@ -39,7 +39,7 @@ public class IfStmtNode extends JottNode {
     }
 
     @Override
-    public boolean validateTree() { // not sure if this works or if it is most efficient, delete if needed
+    public boolean validateTree() { // this may need to be edited for return stuff
         if(!body.returnStmt.isEmpty){
             for(int i = 0; i < elseif.size(); i++)
                 if(elseif.get(i).body.returnStmt.isEmpty)

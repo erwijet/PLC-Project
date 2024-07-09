@@ -28,4 +28,9 @@ public class FuncBodyNode extends JottNode {
         ret.append(body.convertToJott());
         return ret.toString();
     }
+
+    @Override
+    public boolean validateTree() {
+        return body.validateTree();
+    }
 }

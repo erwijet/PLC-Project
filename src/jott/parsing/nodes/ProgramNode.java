@@ -35,4 +35,12 @@ public class ProgramNode extends JottNode {
 
         return ret.toString();
     }
+
+    @Override
+    public boolean validateTree() {
+        for(FuncDefNode function : functions)
+            if(!function.validateTree())
+                return false;
+        return true;
+    }
 }

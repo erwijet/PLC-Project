@@ -27,4 +27,9 @@ public class AssignmentNode extends JottNode {
     public String convertToJott() {
         return id.getToken() + " = " + exp.convertToJott() + ";";
     }
+
+    @Override
+    public boolean validateTree() { // this will be changed
+        return true;
+    }
 }
