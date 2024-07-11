@@ -18,21 +18,21 @@ public class SemanticException extends RuntimeException {
     private static String buildMessage(Cause cause, Token token, Object expected, Object found) {
         return switch (cause) {
             case TYPE_CONFLICT -> String.format("Semantic Error:\nInvalid type for '%s'. Expected %s, but found %s\n%s:%d",
-                    token.getToken(),
+                    token.getTokenString(),
                     expected.toString(),
                     found.toString(),
                     token.getFilename(),
                     token.getLineNum());
             case MISSING_RETURN_TYPE -> String.format("Semantic Error:\nMissing return for non-Void function %s\n%s:%d",
-                    token.getToken(),
+                    token.getTokenString(),
                     token.getFilename(),
                     token.getLineNum());
             case UNKNOWN_FUNCTION -> String.format("Semantic Error:\nCall to unknown function '%s'\n%s:%d",
-                    token.getToken(),
+                    token.getTokenString(),
                     token.getFilename(),
                     token.getLineNum());
             case UNKNOWN_BINDING -> String.format("Semantic Error:\nCall to unknown variable '%s'\n%s:%d",
-                    token.getToken(),
+                    token.getTokenString(),
                     token.getFilename(),
                     token.getLineNum());
             case MISSING_MAIN -> String.format("Semantic Error:\nMissing or incorrectly defined main function\n%s:%d",
@@ -52,4 +52,5 @@ public class SemanticException extends RuntimeException {
         super(buildMessage(cause, token, expected, found));
     }
 }
+
 
