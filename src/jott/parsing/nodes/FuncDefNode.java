@@ -1,5 +1,6 @@
 package jott.parsing.nodes;
 
+import jott.SymbolTable;
 import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.Token;
@@ -32,10 +33,5 @@ public class FuncDefNode extends JottNode {
     @Override
     public String convertToJott() {
         return "Def " + funcId.getTokenString() + "[" + params.convertToJott() + "]: " + funcReturn.convertToJott() + "{\n" + body.convertToJott() + "\n}";
-    }
-
-    @Override
-    public void validateTree(ValidationContext ctx) {
-        return body.validateTree();
     }
 }

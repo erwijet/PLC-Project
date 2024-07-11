@@ -1,5 +1,7 @@
 package jott.parsing.nodes;
 
+import jott.JottType;
+import jott.SemanticException;
 import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.TokenType;
@@ -40,14 +42,21 @@ public class IfStmtNode extends JottNode {
     }
 
     @Override
-    public void validateTree(ValidationContext ctx) { // this may need to be edited for return stuff
-        if(!body.returnStmt.isEmpty){
-            for(int i = 0; i < elseif.size(); i++)
-                if(elseif.get(i).body.returnStmt.isEmpty)
-                    return false;
-            if(!els.empty && els.body.returnStmt.isEmpty)
-                return false;
+    public void validateTree(ValidationContext ctx) {
+        JottType conditionType = condition.resolveType(ctx);
+        if (conditionType != JottType.BOOLEAN) {
+            throw new SemanticException(SemanticException.Cause.TYPE_CONFLICT,
+                    condition.getFirstToken(),
+                    JottType.BOOLEAN,
+                    conditionType);
         }
-        return true;
+
+        ctx.table.pushScope();
+        body.validateTree(ctx);
+        ctx.table.popScope();
+
+        elseif.forEach(node -> node.validateTree(ctx));
+        if (els != null)
+            els.validateTree(ctx);
     }
 }

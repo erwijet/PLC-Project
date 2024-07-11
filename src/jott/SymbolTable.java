@@ -30,7 +30,7 @@ public class SymbolTable {
         public List<JottType> parameterTypes;
         public JottType returnType;
 
-        boolean isVoid() {
+        public boolean isVoid() {
             return returnType == null;
         }
 

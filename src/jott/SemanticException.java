@@ -12,7 +12,8 @@ public class SemanticException extends RuntimeException {
         UNKNOWN_FUNCTION,
         UNKNOWN_BINDING,
         MISSING_MAIN,
-        MALFORMED_TREE
+        MALFORMED_TREE,
+        UNEXPECTED_RETURN
     }
 
     private static String buildMessage(Cause cause, Token token, Object expected, Object found) {
@@ -36,6 +37,9 @@ public class SemanticException extends RuntimeException {
                     token.getFilename(),
                     token.getLineNum());
             case MISSING_MAIN -> String.format("Semantic Error:\nMissing or incorrectly defined main function\n%s:%d",
+                    token.getFilename(),
+                    token.getLineNum());
+            case UNEXPECTED_RETURN -> String.format("Semantic Error:\nUnexpected return statment. Not currently within a function\n%s:%d",
                     token.getFilename(),
                     token.getLineNum());
             // this one really shouldn't ever happen. it's to handle if we expect a relop expr

@@ -6,32 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="whileloopnode maybe done?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/JottTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/JottTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/SemanticException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/SemanticException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/SymbolTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/ParseContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/ParseContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/AssignmentNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/AssignmentNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/ValidationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/ValidationContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyStmtNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncBodyNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncBodyNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncCallNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncCallNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefParamsNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefParamsNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefParamsTNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefParamsTNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/IfStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/IfStmtNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/JottNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/JottNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/MathOpNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/MathOpNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/OperandNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/OperandNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ProgramNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ProgramNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/RelopNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/RelopNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/StrLiteralNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/StrLiteralNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/TypeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/TypeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/VarDeclNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/VarDeclNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/WhileLoopNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/WhileLoopNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/tokenization/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/tokenization/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testers/JottParserTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testers/JottParserTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testers/JottTokenizerTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testers/JottTokenizerTester.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -6,6 +6,7 @@ import jott.SemanticException;
 import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.parsing.ParseException;
+import jott.tokenization.Token;
 import jott.tokenization.TokenType;
 
 import java.util.LinkedList;
@@ -76,6 +77,18 @@ public class ExprNode extends JottNode {
                 .stream()
                 .map(JottTree::convertToJott)
                 .collect(Collectors.joining());
+    }
+
+    public Token getFirstToken() {
+        return switch (variant) {
+            case LITERAL -> {
+                JottNode node = children.get(0);
+                if (node instanceof StrLiteralNode) yield ((StrLiteralNode) node).token;
+                if (node instanceof BoolNode) yield ((BoolNode) node).token;
+                throw new SemanticException(SemanticException.Cause.MALFORMED_TREE, null);
+            }
+            case REL_OP, MATH_OP, OPERAND -> ((OperandNode) children.get(0)).getToken();
+        };
     }
 
     public JottType resolveType(ValidationContext ctx) {

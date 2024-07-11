@@ -33,9 +33,7 @@ public class BodyNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
-        for (BodyStmtNode stmt : bodyStmts)
-            if (!stmt.validateTree())
-                return false;
-        return true;
+        bodyStmts.forEach(stmt -> stmt.validateTree(ctx));
+        returnStmt.validateTree(ctx);
     }
 }
