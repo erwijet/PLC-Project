@@ -1,5 +1,6 @@
 package jott.parsing.nodes;
 
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.parsing.ParseException;
 import jott.tokenization.TokenType;
@@ -37,7 +38,7 @@ public class ProgramNode extends JottNode {
     }
 
     @Override
-    public boolean validateTree() {
+    public void validateTree(ValidationContext ctx) {
         for(FuncDefNode function : functions)
             if(!function.validateTree())
                 return false;

@@ -30,7 +30,7 @@ public class Token {
      * Getter for the token string
      * @return the token string
      */
-    public String getToken() {
+    public String getTokenString() {
         return token;
     }
 

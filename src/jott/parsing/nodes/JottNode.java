@@ -1,6 +1,7 @@
 package jott.parsing.nodes;
 
 import jott.JottTree;
+import jott.ValidationContext;
 
 abstract class JottNode implements JottTree {
     private JottNode[] children;
@@ -25,7 +26,7 @@ abstract class JottNode implements JottTree {
     }
 
     @Override
-    public boolean validateTree() {
-        return false; // stub
+    public void validateTree(ValidationContext ctx) {
+        // pass
     }
 }

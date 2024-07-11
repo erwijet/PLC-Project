@@ -1,8 +1,7 @@
 package jott.parsing.nodes;
 
-import jott.JottTree;
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
-import jott.tokenization.TokenType;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -33,7 +32,7 @@ public class BodyNode extends JottNode {
     }
 
     @Override
-    public boolean validateTree() {
+    public void validateTree(ValidationContext ctx) {
         for (BodyStmtNode stmt : bodyStmts)
             if (!stmt.validateTree())
                 return false;

@@ -1,5 +1,6 @@
 package jott.parsing.nodes;
 
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.TokenType;
 
@@ -39,7 +40,7 @@ public class IfStmtNode extends JottNode {
     }
 
     @Override
-    public boolean validateTree() { // this may need to be edited for return stuff
+    public void validateTree(ValidationContext ctx) { // this may need to be edited for return stuff
         if(!body.returnStmt.isEmpty){
             for(int i = 0; i < elseif.size(); i++)
                 if(elseif.get(i).body.returnStmt.isEmpty)

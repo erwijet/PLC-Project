@@ -1,6 +1,10 @@
 package jott.parsing.nodes;
 
 
+import jott.JottType;
+import jott.SemanticException;
+import jott.SymbolTable;
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.Token;
 import jott.tokenization.TokenType;
@@ -25,12 +29,19 @@ public class AssignmentNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return id.getToken() + " = " + exp.convertToJott() + ";";
+        return id.getTokenString() + " = " + exp.convertToJott() + ";";
     }
 
     @Override
-    public boolean validateTree() {
+    public void validateTree(ValidationContext ctx) {
+        JottType expectedType = ctx.table.resolve(id.getTokenString(), SymbolTable.Binding.class)
+                .orElseThrow(() -> new SemanticException(SemanticException.Cause.UNKNOWN_BINDING, id))
+                .type;
 
-        return true;
+        JottType foundType = exp.resolveType(ctx);
+
+        if (expectedType != foundType) {
+            throw new SemanticException(SemanticException.Cause.TYPE_CONFLICT, id, expectedType, foundType);
+        }
     }
 }

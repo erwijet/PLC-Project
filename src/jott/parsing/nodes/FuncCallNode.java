@@ -25,11 +25,10 @@ public class FuncCallNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return "::" + name.getToken() + "[" + params.convertToJott() + "]";
+        return "::" + name.getTokenString() + "[" + params.convertToJott() + "]";
     }
 
-    @Override
-    public boolean validateTree() { // change this
-        return true;
+    public Token getToken() {
+        return name;
     }
 }

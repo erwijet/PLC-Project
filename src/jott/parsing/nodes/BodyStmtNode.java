@@ -1,6 +1,6 @@
 package jott.parsing.nodes;
 
-import jott.JottTree;
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.parsing.ParseException;
 import jott.tokenization.TokenType;
@@ -59,7 +59,7 @@ public class BodyStmtNode extends JottNode {
     }
 
     @Override
-    public boolean validateTree() {
+    public void validateTree(ValidationContext ctx) {
         return stmt.validateTree();
     }
 }

@@ -6,7 +6,6 @@ import jott.tokenization.TokenType;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 
 public class FuncDefParamsNode extends JottNode {
     Token paramName;
@@ -35,7 +34,7 @@ public class FuncDefParamsNode extends JottNode {
     @Override
     public String convertToJott() {
         if (!isEmpty) {
-            StringBuilder str = new StringBuilder(paramName.getToken() + ": " + paramType.convertToJott());
+            StringBuilder str = new StringBuilder(paramName.getTokenString() + ": " + paramType.convertToJott());
             for (FuncDefParamsTNode t: tail) str.append(t.convertToJott());
             return str.toString();
         }

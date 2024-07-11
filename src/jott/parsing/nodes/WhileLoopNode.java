@@ -1,5 +1,6 @@
 package jott.parsing.nodes;
 
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.TokenType;
 
@@ -26,7 +27,7 @@ public class WhileLoopNode extends JottNode {
     }
 
     @Override
-    public boolean validateTree() {
+    public void validateTree(ValidationContext ctx) {
         return body.validateTree();
     }
 }
