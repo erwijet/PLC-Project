@@ -91,7 +91,6 @@ public class ExprNode extends JottNode {
                 throw new RuntimeException("unexpected node type: children@1");
             }
             case MATH_OP -> {
-
             }
 
         };

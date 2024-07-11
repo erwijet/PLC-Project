@@ -10,7 +10,8 @@ public class SemanticException extends RuntimeException {
         TYPE_CONFLICT,
         MISSING_RETURN_TYPE,
         UNKNOWN_FUNCTION,
-        UNKNOWN_BINDING
+        UNKNOWN_BINDING,
+        MALFORMED_TREE
     }
 
     private static String buildMessage(Cause cause, Token token, Object expected, Object found) {
@@ -23,6 +24,9 @@ public class SemanticException extends RuntimeException {
             case MISSING_RETURN_TYPE -> null;
             case UNKNOWN_FUNCTION -> null;
             case UNKNOWN_BINDING -> null;
+            // this one really shouldn't ever happen. it's to handle if we expect a relop expr
+            // to have 3 children (left, opt, right) and it has less or something
+            case MALFORMED_TREE -> null;
         };
     }
 
