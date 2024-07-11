@@ -55,4 +55,9 @@ public class Token {
     public TokenType getTokenType() {
         return type;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s:%s", filename, lineNum);
+    }
 }

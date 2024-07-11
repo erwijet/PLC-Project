@@ -1,5 +1,6 @@
 package jott.parsing.nodes;
 
+import jott.JottType;
 import jott.parsing.ParseContext;
 import jott.tokenization.Token;
 import jott.tokenization.TokenType;
@@ -48,5 +49,13 @@ public class OperandNode extends JottNode {
             str += "-";
         str += num.getToken();
         return str;
+    }
+
+    public JottType resolveType() {
+        if (id != null) {
+
+        }
+
+        return null; // TODO: implement
     }
 }

@@ -23,9 +23,7 @@ public class SemanticException extends RuntimeException {
             case MISSING_RETURN_TYPE -> null;
             case UNKNOWN_FUNCTION -> null;
             case UNKNOWN_BINDING -> null;
-        }
-
-        return "Unknown cause";
+        };
     }
 
     public SemanticException(Cause cause, Token token) {

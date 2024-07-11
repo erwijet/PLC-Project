@@ -30,6 +30,7 @@ public class AssignmentNode extends JottNode {
 
     @Override
     public boolean validateTree() {
+
         return true;
     }
 }
