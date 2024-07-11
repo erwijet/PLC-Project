@@ -30,7 +30,7 @@ public class ParseContext {
 
     public String peekNextStr() {
         if (isEOF()) return null;
-        return peekNext().getToken();
+        return peekNext().getTokenString();
     }
 
     public TokenType peekNextType() {
@@ -61,7 +61,7 @@ public class ParseContext {
 
     public Token eat(TokenType expectedType, String expectedStr) {
         Token token = eat(expectedType);
-        if (!Objects.equals(token.getToken(), expectedStr)) {
+        if (!Objects.equals(token.getTokenString(), expectedStr)) {
             throw new ParseException(ParseException.Cause.SYNTAX, this, expectedStr);
         }
 

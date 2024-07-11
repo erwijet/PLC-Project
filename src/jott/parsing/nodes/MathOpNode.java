@@ -1,6 +1,5 @@
 package jott.parsing.nodes;
 
-import jott.JottType;
 import jott.parsing.ParseContext;
 import jott.tokenization.Token;
 import jott.tokenization.TokenType;
@@ -16,6 +15,6 @@ public class MathOpNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return token.getToken();
+        return token.getTokenString();
     }
 }

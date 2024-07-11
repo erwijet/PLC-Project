@@ -18,7 +18,7 @@ public class SymbolTable {
     }
 
     public class Binding extends Symbol {
-        JottType type;
+        public JottType type;
 
         public Binding(String name, JottType type) {
             super(name);
@@ -27,8 +27,8 @@ public class SymbolTable {
     }
 
     public class Function extends Symbol {
-        List<JottType> parameterTypes;
-        JottType returnType;
+        public List<JottType> parameterTypes;
+        public JottType returnType;
 
         boolean isVoid() {
             return returnType == null;

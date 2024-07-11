@@ -15,6 +15,6 @@ public class StrLiteralNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return token.getToken();
+        return token.getTokenString();
     }
 }

@@ -24,6 +24,6 @@ public class VarDeclNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return type.convertToJott() + " " + identifier.getToken() + ";";
+        return type.convertToJott() + " " + identifier.getTokenString() + ";";
     }
 }

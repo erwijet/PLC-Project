@@ -22,7 +22,7 @@ public class TypeNode extends JottNode {
         TypeNode node = new TypeNode();
         node.token = ctx.eat(TokenType.ID_KEYWORD);
 
-        switch (node.token.getToken()) {
+        switch (node.token.getTokenString()) {
             case "Double" -> {
                 node.variant = JottType.DOUBLE;
             }
@@ -43,6 +43,6 @@ public class TypeNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return token.getToken();
+        return token.getTokenString();
     }
 }

@@ -22,6 +22,6 @@ public class FuncDefParamsTNode extends JottNode {
 
     @Override
     public String convertToJott() {
-        return ", " + funcName.getToken() + ":" + returnType.convertToJott();
+        return ", " + funcName.getTokenString() + ":" + returnType.convertToJott();
     }
 }

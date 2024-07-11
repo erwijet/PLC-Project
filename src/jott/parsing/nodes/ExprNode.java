@@ -2,6 +2,8 @@ package jott.parsing.nodes;
 
 import jott.JottTree;
 import jott.JottType;
+import jott.SemanticException;
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.parsing.ParseException;
 import jott.tokenization.TokenType;
@@ -76,23 +78,17 @@ public class ExprNode extends JottNode {
                 .collect(Collectors.joining());
     }
 
-    public JottType resolveType() {
+    public JottType resolveType(ValidationContext ctx) {
         return switch (variant) {
             case LITERAL -> {
                 if (children.get(0) instanceof StrLiteralNode) yield JottType.STRING;
                 if (children.get(0) instanceof BoolNode) yield JottType.BOOLEAN;
-                throw new RuntimeException("unexpected node type: children@0");
+                throw new SemanticException(SemanticException.Cause.MALFORMED_TREE, null);
             }
-            case REL_OP -> {
-                JottNode node = children.get(1);
-                if (node instanceof RelopNode)
-                    yield ((RelopNode) node).resolveType();
-
-                throw new RuntimeException("unexpected node type: children@1");
-            }
-            case MATH_OP -> {
-            }
-
+            case REL_OP -> JottType.BOOLEAN;
+            case OPERAND -> ((OperandNode) children.get(0)).resolveType(ctx);
+            case MATH_OP -> // lhs of math op sets type (either INTEGER/DOUBLE)
+                    ((OperandNode) children.get(0)).resolveType(ctx);
         };
 
     }

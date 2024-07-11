@@ -1,9 +1,6 @@
 package jott;
 
-import jott.parsing.ParseContext;
-import jott.tokenization.JottTokenizerContext;
 import jott.tokenization.Token;
-import jott.tokenization.TokenType;
 
 public class SemanticException extends RuntimeException {
     public enum Cause {
@@ -17,7 +14,7 @@ public class SemanticException extends RuntimeException {
     private static String buildMessage(Cause cause, Token token, Object expected, Object found) {
         return switch (cause) {
             case TYPE_CONFLICT -> String.format("Semantic Error\nInvalid type for '%s'. Expected %s, but found %s\n%s",
-                    token.getToken(),
+                    token.getTokenString(),
                     expected.toString(),
                     found.toString(),
                     token);

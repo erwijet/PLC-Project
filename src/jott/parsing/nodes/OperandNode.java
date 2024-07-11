@@ -1,6 +1,9 @@
 package jott.parsing.nodes;
 
 import jott.JottType;
+import jott.SemanticException;
+import jott.SymbolTable;
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.Token;
 import jott.tokenization.TokenType;
@@ -41,21 +44,47 @@ public class OperandNode extends JottNode {
     @Override
     public String convertToJott() {
         if(id != null)
-            return id.getToken();
+            return id.getTokenString();
         if(func != null)
             return func.convertToJott();
         String str = "";
         if(negative)
             str += "-";
-        str += num.getToken();
+        str += num.getTokenString();
         return str;
     }
 
-    public JottType resolveType() {
-        if (id != null) {
+    public Token getToken() {
+        if (id != null) return id;
+        if (num != null) return num;
+        if (func != null) return func.getToken();
 
+        throw new SemanticException(SemanticException.Cause.MALFORMED_TREE, null);
+    }
+
+    public JottType resolveType(ValidationContext ctx) {
+        if (id != null) {
+            return ctx.table.resolve(id.getTokenString(), SymbolTable.Binding.class)
+                    .orElseThrow(() -> new SemanticException(SemanticException.Cause.UNKNOWN_BINDING, getToken()))
+                    .type;
         }
 
-        return null; // TODO: implement
+        if (num != null) {
+            if (num.getTokenString().contains(".")) return JottType.DOUBLE;
+            else return JottType.INTEGER;
+        }
+
+        if (func != null) {
+            return ctx.table.resolve(func.getToken().getTokenString(), SymbolTable.Function.class)
+                    .orElseThrow(() -> new SemanticException(SemanticException.Cause.UNKNOWN_FUNCTION, getToken()))
+                    .returnType;
+        }
+
+        throw new SemanticException(SemanticException.Cause.MALFORMED_TREE, null);
+    }
+
+    @Override
+    public void validateTree(ValidationContext ctx) {
+        return super.validateTree(ctx); //  TODO: implement
     }
 }
