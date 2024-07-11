@@ -1,5 +1,7 @@
 package jott.parsing.nodes;
 
+import jott.JottType;
+import jott.SemanticException;
 import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.TokenType;
@@ -28,6 +30,15 @@ public class WhileLoopNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
-        return body.validateTree();
+        JottType conditionType = condition.resolveType(ctx);
+        if (conditionType != JottType.BOOLEAN) { // make sure condition is a boolean
+            throw new SemanticException(SemanticException.Cause.TYPE_CONFLICT,
+                    condition.getFirstToken(),
+                    JottType.BOOLEAN,
+                    conditionType);
+        }
+        ctx.table.pushScope();
+        body.validateTree(ctx);
+        ctx.table.popScope();
     }
 }
