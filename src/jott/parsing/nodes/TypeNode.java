@@ -1,5 +1,6 @@
 package jott.parsing.nodes;
 
+import jott.JottType;
 import jott.parsing.ParseContext;
 import jott.parsing.ParseException;
 import jott.tokenization.Token;
@@ -8,14 +9,8 @@ import jott.tokenization.TokenType;
 import java.util.List;
 
 public class TypeNode extends JottNode {
-    enum Variant {
-        DOUBLE,
-        INTEGER,
-        STRING,
-        BOOLEAN
-    }
 
-    private Variant variant;
+    private JottType variant;
     private Token token;
 
     static boolean canParse(ParseContext ctx) {
@@ -29,16 +24,16 @@ public class TypeNode extends JottNode {
 
         switch (node.token.getToken()) {
             case "Double" -> {
-                node.variant = Variant.DOUBLE;
+                node.variant = JottType.DOUBLE;
             }
             case "Integer" -> {
-                node.variant = Variant.INTEGER;
+                node.variant = JottType.INTEGER;
             }
             case "String" -> {
-                node.variant = Variant.STRING;
+                node.variant = JottType.STRING;
             }
             case "Boolean" -> {
-                node.variant = Variant.BOOLEAN;
+                node.variant = JottType.BOOLEAN;
             }
             default -> throw new ParseException(ParseException.Cause.SYNTAX, ctx, "Double, Integer, String, or Boolean");
         };

@@ -29,7 +29,7 @@ public class AssignmentNode extends JottNode {
     }
 
     @Override
-    public boolean validateTree() { // this will be changed
+    public boolean validateTree() {
         return true;
     }
 }
