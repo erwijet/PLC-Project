@@ -1,0 +1,39 @@
+package jott;
+
+import jott.parsing.ParseContext;
+import jott.tokenization.JottTokenizerContext;
+import jott.tokenization.Token;
+import jott.tokenization.TokenType;
+
+public class SemanticException extends RuntimeException {
+    public enum Cause {
+        TYPE_CONFLICT,
+        MISSING_RETURN_TYPE,
+        UNKNOWN_FUNCTION,
+        UNKNOWN_BINDING
+    }
+
+    private static String buildMessage(Cause cause, Token token, Object expected, Object found) {
+        return switch (cause) {
+            case TYPE_CONFLICT -> String.format("Semantic Error\nInvalid type for '%s'. Expected %s, but found %s\n%s",
+                    token.getToken(),
+                    expected.toString(),
+                    found.toString(),
+                    token);
+            case MISSING_RETURN_TYPE -> null;
+            case UNKNOWN_FUNCTION -> null;
+            case UNKNOWN_BINDING -> null;
+        }
+
+        return "Unknown cause";
+    }
+
+    public SemanticException(Cause cause, Token token) {
+        super(buildMessage(cause, token, null, null));
+    }
+
+    public SemanticException(Cause cause, Token token, Object expected, Object found) {
+        super(buildMessage(cause, token, expected, found));
+    }
+}
+

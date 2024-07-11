@@ -101,9 +101,12 @@ public class SymbolTable {
      * @throws ConflictException if a symbol with a conflicting {@link Symbol#name name} exists
      */
     public <T extends Symbol> void insert(T symbol) throws ConflictException {
-        resolve(symbol.name).ifPresent(it -> {
-            throw new ConflictException(String.format("Symbol '%s' (%s) already exists in the current scope.", symbol.name, it.discriminant))
-        });
+        Optional<Symbol> conflicting = resolve(symbol.name);
+        if (conflicting.isPresent()) {
+            throw new ConflictException(String.format("Symbol '%s' (%s) already exists in the current scope.",
+                    symbol.name,
+                    conflicting.get()));
+        }
 
         this.getScope().put(symbol.name, symbol);
     }
