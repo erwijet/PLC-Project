@@ -7,17 +7,16 @@ package testers;
   This tester assumes a working and valid tokenizer.
  */
 
-import jott.JottParser;
-import jott.JottTree;
-import jott.tokenization.Token;
+import provided.JottParser;
+import provided.JottTree;
+import provided.JottTokenizer;
+import provided.Token;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-
-import jott.tokenization.*;
 
 public class JottParserTester {
     ArrayList<TestCase> testCases;
@@ -90,13 +89,13 @@ public class JottParserTester {
 
             if (!test.error && root == null) {
                 System.err.println("\tFailed Test: " + test.testName);
-                System.err.println("\t\tExpected a jott.JottTree and got null");
+                System.err.println("\t\tExpected a provided.JottTree and got null");
                 return false;
             } else if (test.error && root == null) {
                 return true;
             } else if (test.error) {
                 System.err.println("\tFailed Test: " + test.testName);
-                System.err.println("\t\tExpected a null and got jott.JottTree");
+                System.err.println("\t\tExpected a null and got provided.JottTree");
                 return false;
             }
 
@@ -147,7 +146,7 @@ public class JottParserTester {
 
                 if (!tokensEqualNoFileData(n, t)) {
                     System.err.println("\tFailed Test: " + test.testName);
-                    System.err.println("jott.tokenization.Token mismatch: Tokens do not match.");
+                    System.err.println("provided.Token mismatch: Tokens do not match.");
                     System.err.println("Similar files should have same tokenization.");
                     System.err.println("Expected: " + tokenListString(cpyTokens));
                     System.err.println("Got     : " + tokenListString(newTokens));

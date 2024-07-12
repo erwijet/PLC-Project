@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: jott.Jott
+Main-Class: provided.Jott
 

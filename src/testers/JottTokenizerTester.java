@@ -12,7 +12,10 @@ package testers;
  */
 
 import java.util.ArrayList;
-import jott.tokenization.*;
+
+import provided.JottTokenizer;
+import provided.Token;
+import provided.TokenType;
 
 public class JottTokenizerTester {
 
@@ -140,7 +143,7 @@ public class JottTokenizerTester {
     }
 
     private String tokenToString(Token t){
-        return String.format("jott.tokenization.Token %s %s %s:%d", t.getTokenString(), t.getTokenType().toString(),
+        return String.format("provided.Token %s %s %s:%d", t.getTokenString(), t.getTokenType().toString(),
                                                   t.getFilename(), t.getLineNum());
     }
 
