@@ -5,7 +5,7 @@ import jott.tokenization.Token;
 import java.util.*;
 
 public class SymbolTable {
-    public abstract class Symbol {
+    public abstract static class Symbol {
         public String name;
         public Token token;
 
@@ -76,7 +76,13 @@ public class SymbolTable {
      * @return the {@link Symbol symbol}, if present
      */
     public Optional<Symbol> resolve(String symbolName) {
-        return Optional.ofNullable(this.scopes.peek().get(symbolName));
+        for (Object map : scopes.toArray()) {
+            Symbol symbol = ((Map<String, Symbol>)map).get(symbolName);
+            if (symbol != null)
+                return Optional.of(symbol);
+        }
+
+        return Optional.empty();
     }
 
     /**
