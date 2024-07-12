@@ -25,6 +25,10 @@ public class ElseNode extends JottNode {
         return null; // if no else exists
     }
 
+    public boolean hasReturn() {
+        return body.hasReturn();
+    }
+
     @Override
     public String convertToJott() {
         if (!empty)

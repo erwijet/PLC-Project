@@ -33,6 +33,12 @@ public class IfStmtNode extends JottNode {
         return node;
     }
 
+    public boolean hasReturn() {
+        return body.hasReturn()
+                && elseif.stream().allMatch(ElseIfNode::hasReturn)
+                && (els == null || els.hasReturn());
+    }
+
     @Override
     public String convertToJott() {
         String str = "If[" + condition.convertToJott() + "]{\n" + body.convertToJott() + "\n}";

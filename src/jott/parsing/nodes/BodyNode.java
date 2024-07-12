@@ -25,6 +25,10 @@ public class BodyNode extends JottNode {
         return node;
     }
 
+    public boolean hasReturn() {
+        return !returnStmt.isEmpty || bodyStmts.stream().anyMatch(BodyStmtNode::hasReturn);
+    }
+
     @Override
     public String convertToJott() {
         String str = "";

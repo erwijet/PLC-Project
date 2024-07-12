@@ -46,6 +46,10 @@ public class BodyStmtNode extends JottNode {
         throw new ParseException(ParseException.Cause.SYNTAX, ctx, "If block, While block, or Function call");
     }
 
+    public boolean hasReturn() {
+        return stmt instanceof IfStmtNode && ((IfStmtNode) stmt).hasReturn();
+    }
+
     @Override
     public String convertToJott() {
         var ret = new StringBuilder();

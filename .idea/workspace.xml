@@ -13,9 +13,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out.jott" beforeDir="false" afterPath="$PROJECT_DIR$/out.jott" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyStmtNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ElseIfNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ElseIfNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ElseNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ElseNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncBodyNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncBodyNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/JottNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/JottNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/IfStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/IfStmtNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +69,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Jott.executor": "Debug",
+    "Application.Jott.executor": "Run",
     "Application.JottParserTester.executor": "Run",
     "Application.JottTokenizerTester.executor": "Run",
     "Application.Main.executor": "Run",
@@ -106,7 +108,7 @@
     <configuration name="Jott" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="jott.Jott" />
       <module name="JottTranslater" />
-      <option name="PROGRAM_PARAMETERS" value="phase3testcases/whileKeyword.jott ./out.jott jott" />
+      <option name="PROGRAM_PARAMETERS" value="phase3testcases/missingReturn.jott ./out.jott jott" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="jott.*" />
@@ -215,18 +217,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/ElseNode.java</url>
-          <line>37</line>
+          <line>41</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/ElseNode.java</url>
-          <line>38</line>
+          <line>42</line>
           <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/FuncBodyNode.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -24,6 +24,10 @@ public class FuncBodyNode extends JottNode {
         return node;
     }
 
+    public boolean hasReturn() {
+        return body.hasReturn();
+    }
+
     @Override
     public String convertToJott() {
         var ret = new StringBuilder();
@@ -38,7 +42,7 @@ public class FuncBodyNode extends JottNode {
         body.validateTree(ctx);
 
         ctx.getEnclosingFunction().ifPresent(fn -> {
-            if (!fn.isVoid() && body.returnStmt.isEmpty)
+            if (!fn.isVoid() && !hasReturn())
                 throw new SemanticException(SemanticException.Cause.MISSING_RETURN, fn.token);
         });
     }

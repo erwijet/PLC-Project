@@ -23,6 +23,10 @@ public class ElseIfNode extends JottNode {
         return node;
     }
 
+    public boolean hasReturn() {
+        return body.hasReturn();
+    }
+
     @Override
     public String convertToJott() {
         return "Elseif[" + condition.convertToJott() + "]{\n" + body.convertToJott() + "\n}";
