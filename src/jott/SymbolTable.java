@@ -60,7 +60,8 @@ public class SymbolTable {
 
     private static Map<String, Symbol> builtins = Map.of(
             "print", new Function("print", List.of(JottType.ANY), null),
-            "concat", new Function("concat", List.of(JottType.STRING, JottType.STRING), JottType.STRING)
+            "concat", new Function("concat", List.of(JottType.STRING, JottType.STRING), JottType.STRING),
+            "length", new Function("length", Collections.singletonList(JottType.STRING), JottType.INTEGER)
     );
 
     /**
