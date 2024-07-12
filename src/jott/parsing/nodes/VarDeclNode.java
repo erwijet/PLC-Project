@@ -1,5 +1,8 @@
 package jott.parsing.nodes;
 
+import jott.JottType;
+import jott.SymbolTable;
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.Token;
 import jott.tokenization.TokenType;
@@ -25,5 +28,11 @@ public class VarDeclNode extends JottNode {
     @Override
     public String convertToJott() {
         return type.convertToJott() + " " + identifier.getTokenString() + ";";
+    }
+
+    @Override
+    public void validateTree(ValidationContext ctx) {
+        ctx.table.insert(new SymbolTable.Binding(identifier, identifier.getTokenString(), type.resolveType(ctx)));
+
     }
 }

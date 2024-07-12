@@ -51,7 +51,7 @@ public class SemanticException extends RuntimeException {
                     expected,
                     token.getFilename(),
                     token.getLineNum());
-            case UNEXPECTED_RETURN -> String.format("Semantic Error:\nUnexpected return statment. Not currently within a function\n%s:%d",
+            case UNEXPECTED_RETURN -> String.format("Semantic Error:\nUnexpected return statement. Not currently within a function\n%s:%d",
                     token.getFilename(),
                     token.getLineNum());
             // this one really shouldn't ever happen. it's to handle if we expect a relop expr

@@ -1,6 +1,7 @@
 package jott.parsing.nodes;
 
 import jott.JottType;
+import jott.SemanticException;
 import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.parsing.ParseException;
@@ -47,6 +48,18 @@ public class TypeNode extends JottNode {
         return token.getTokenString();
     }
 
+    @Override
+    public void validateTree(ValidationContext ctx) {
+        switch (variant) {
+            case DOUBLE:
+            case INTEGER:
+            case STRING:
+            case BOOLEAN:
+                break;
+            default: // shouldnt happen but just in case
+                throw new SemanticException(SemanticException.Cause.TYPE_CONFLICT, token, "Double, Integer, String, Boolean", variant);
+        }
+    }
     public JottType resolveType(ValidationContext ctx) {
         return variant;
     }
