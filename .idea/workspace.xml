@@ -6,14 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="whileloopnode maybe done?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncReturnNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncReturnNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/MathOpNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/MathOpNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/OperandNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/OperandNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ParamsNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ParamsNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ParamsTNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ParamsTNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ProgramNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ProgramNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/RelopNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/RelopNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/SemanticException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/SemanticException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

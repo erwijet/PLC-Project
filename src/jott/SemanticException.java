@@ -8,13 +8,13 @@ import jott.tokenization.TokenType;
 public class SemanticException extends RuntimeException {
     public enum Cause {
         TYPE_CONFLICT,
-        MISSING_RETURN_TYPE,
         UNKNOWN_FUNCTION,
         UNKNOWN_BINDING,
         INCORRECT_ARGUMENT_COUNT,
         MISSING_MAIN,
         MALFORMED_TREE,
         UNEXPECTED_RETURN,
+        MISSING_RETURN,
         CONFLICTING_IDENTIFIER
     }
 
@@ -32,7 +32,7 @@ public class SemanticException extends RuntimeException {
                     found.toString(),
                     token.getFilename(),
                     token.getLineNum());
-            case MISSING_RETURN_TYPE -> String.format("Semantic Error:\nMissing return for non-Void function %s\n%s:%d",
+            case MISSING_RETURN -> String.format("Semantic Error:\nMissing return for non-Void function %s\n%s:%d",
                     token.getTokenString(),
                     token.getFilename(),
                     token.getLineNum());

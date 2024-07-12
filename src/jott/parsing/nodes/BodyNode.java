@@ -1,5 +1,6 @@
 package jott.parsing.nodes;
 
+import jott.SemanticException;
 import jott.ValidationContext;
 import jott.parsing.ParseContext;
 
@@ -34,6 +35,13 @@ public class BodyNode extends JottNode {
     @Override
     public void validateTree(ValidationContext ctx) {
         bodyStmts.forEach(stmt -> stmt.validateTree(ctx));
-        returnStmt.validateTree(ctx);
+
+        ctx.getEnclosingFunction().ifPresent(fn -> {
+            if (!fn.isVoid() && returnStmt == null)
+                throw new SemanticException(SemanticException.Cause.MISSING_RETURN, fn.token);
+        });
+
+        if (returnStmt != null)
+            returnStmt.validateTree(ctx);
     }
 }
