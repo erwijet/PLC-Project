@@ -36,11 +36,6 @@ public class BodyNode extends JottNode {
     public void validateTree(ValidationContext ctx) {
         bodyStmts.forEach(stmt -> stmt.validateTree(ctx));
 
-        ctx.getEnclosingFunction().ifPresent(fn -> {
-            if (!fn.isVoid() && returnStmt == null)
-                throw new SemanticException(SemanticException.Cause.MISSING_RETURN, fn.token);
-        });
-
         if (returnStmt != null)
             returnStmt.validateTree(ctx);
     }

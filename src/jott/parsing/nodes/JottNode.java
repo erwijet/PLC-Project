@@ -3,6 +3,10 @@ package jott.parsing.nodes;
 import jott.JottTree;
 import jott.ValidationContext;
 
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.function.Predicate;
+
 abstract class JottNode implements JottTree {
     private JottNode[] children;
 

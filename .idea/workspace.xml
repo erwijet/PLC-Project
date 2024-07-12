@@ -11,11 +11,11 @@
   <component name="ChangeListManager">
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="whileloopnode maybe done?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JottTranslater.jar" beforeDir="false" afterPath="$PROJECT_DIR$/JottTranslater.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out.jott" beforeDir="false" afterPath="$PROJECT_DIR$/out.jott" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/BodyNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncBodyNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncBodyNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/JottNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/JottNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/WhileLoopNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/WhileLoopNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +86,7 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.intentionPowerPack",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Kotlin",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -103,10 +103,10 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Jott">
-    <configuration name="Jott" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Jott" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="jott.Jott" />
       <module name="JottTranslater" />
-      <option name="PROGRAM_PARAMETERS" value="phase3testcases/funcReturnInExpr.jott ./out.jott jott" />
+      <option name="PROGRAM_PARAMETERS" value="phase3testcases/whileKeyword.jott ./out.jott jott" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="jott.*" />
@@ -152,7 +152,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Jott" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.JottTokenizerTester" />
       </list>
@@ -215,14 +214,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/jott/Jott.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="21" />
+          <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/ElseNode.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefNode.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="22" />
+          <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/ElseNode.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/FuncBodyNode.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="36" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -231,5 +235,9 @@
         <PinnedItemInfo parentTag="jott.parsing.nodes.BodyStmtNode" memberName="stmt" />
       </pinned-members>
     </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

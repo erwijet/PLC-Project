@@ -13,7 +13,7 @@ import java.util.Optional;
 public class ReturnStmtNode extends JottNode {
     Token kwd;
     ExprNode expr;
-    boolean isEmpty = true;
+    public boolean isEmpty = true;
 
     public static ReturnStmtNode parse(ParseContext ctx) {
         ReturnStmtNode node = new ReturnStmtNode();
@@ -44,17 +44,9 @@ public class ReturnStmtNode extends JottNode {
                     "Void",
                     expr.resolveType(ctx));
 
-        if (isEmpty && !enclosingFn.isVoid()) { // todo: this seems to be an issue
-            throw new SemanticException(SemanticException.Cause.TYPE_CONFLICT,
-                    kwd,
-                    "Void",
-                    enclosingFn.returnType);
-            }
-
-        if (isEmpty && enclosingFn.isVoid()) return; // null expr
+        if (isEmpty) return; // null expr
 
         JottType exprType = expr.resolveType(ctx);
-
         if (exprType != enclosingFn.returnType)
             throw new SemanticException(SemanticException.Cause.TYPE_CONFLICT,
                     expr.getFirstToken(),

@@ -1,6 +1,7 @@
 package jott.parsing.nodes;
 
 import jott.JottType;
+import jott.SemanticException;
 import jott.ValidationContext;
 import jott.parsing.ParseContext;
 
@@ -35,5 +36,10 @@ public class FuncBodyNode extends JottNode {
     public void validateTree(ValidationContext ctx) {
         varDecls.forEach(node -> node.validateTree(ctx));
         body.validateTree(ctx);
+
+        ctx.getEnclosingFunction().ifPresent(fn -> {
+            if (!fn.isVoid() && body.returnStmt.isEmpty)
+                throw new SemanticException(SemanticException.Cause.MISSING_RETURN, fn.token);
+        });
     }
 }
