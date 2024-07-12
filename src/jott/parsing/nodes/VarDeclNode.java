@@ -1,6 +1,7 @@
 package jott.parsing.nodes;
 
 import jott.JottType;
+import jott.SemanticException;
 import jott.SymbolTable;
 import jott.ValidationContext;
 import jott.parsing.ParseContext;
@@ -32,6 +33,8 @@ public class VarDeclNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
+        if(!Character.isLowerCase(identifier.getTokenString().charAt(0))) // not starting with lowercase letter
+            throw new SemanticException(SemanticException.Cause.LOWERCASE_VARS, identifier);
         ctx.table.insert(new SymbolTable.Binding(identifier, identifier.getTokenString(), type.resolveType(ctx)));
 
     }

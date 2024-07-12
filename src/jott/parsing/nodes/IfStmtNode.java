@@ -37,7 +37,7 @@ public class IfStmtNode extends JottNode {
     public String convertToJott() {
         String str = "If[" + condition.convertToJott() + "]{\n" + body.convertToJott() + "\n}";
         for(ElseIfNode elseif : elseif) str += elseif.convertToJott();
-        str += els.convertToJott();
+        if(els != null) str += els.convertToJott();
         return str;
     }
 

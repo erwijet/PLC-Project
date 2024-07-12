@@ -44,7 +44,7 @@ public class ReturnStmtNode extends JottNode {
                     "Void",
                     expr.resolveType(ctx));
 
-        if (isEmpty && !enclosingFn.isVoid()) {
+        if (isEmpty && !enclosingFn.isVoid()) { // todo: this seems to be an issue
             throw new SemanticException(SemanticException.Cause.TYPE_CONFLICT,
                     kwd,
                     "Void",

@@ -15,7 +15,8 @@ public class SemanticException extends RuntimeException {
         MALFORMED_TREE,
         UNEXPECTED_RETURN,
         MISSING_RETURN,
-        CONFLICTING_IDENTIFIER
+        CONFLICTING_IDENTIFIER,
+        LOWERCASE_VARS
     }
 
     private static String buildMessage(Cause cause, Token token, Object expected, Object found) {
@@ -49,6 +50,10 @@ public class SemanticException extends RuntimeException {
                     token.getLineNum());
             case CONFLICTING_IDENTIFIER -> String.format("Semantic Error:\nIdentifier '%s' already exists\n%s:%d",
                     expected,
+                    token.getFilename(),
+                    token.getLineNum());
+            case LOWERCASE_VARS -> String.format("Semantic Error:\nVariable '%s' must start with a lowercase letter\n%s:%d",
+                    token.getTokenString(),
                     token.getFilename(),
                     token.getLineNum());
             case UNEXPECTED_RETURN -> String.format("Semantic Error:\nUnexpected return statement. Not currently within a function\n%s:%d",
