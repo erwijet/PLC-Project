@@ -32,6 +32,12 @@ public class SymbolTable {
             return returnType == null;
         }
 
+        public Function(String name, List<JottType> parameterTypes, JottType returnType) {
+            super(null, name);
+            this.parameterTypes = parameterTypes;
+            this.returnType = returnType;
+        }
+
         public Function(Token token, List<JottType> parameterTypes, JottType returnType) {
             super(token, token.getTokenString());
             this.parameterTypes = parameterTypes;
@@ -52,7 +58,10 @@ public class SymbolTable {
         pushScope();
     }
 
-    //
+    private static Map<String, Symbol> builtins = Map.of(
+            "print", new Function("print", List.of(JottType.ANY), null),
+            "concat", new Function("concat", List.of(JottType.STRING, JottType.STRING), JottType.STRING)
+    );
 
     /**
      * Pushes a clean scope onto the scope stack
@@ -76,6 +85,10 @@ public class SymbolTable {
      * @return the {@link Symbol symbol}, if present
      */
     public Optional<Symbol> resolve(String symbolName) {
+        Symbol builtin = builtins.get(symbolName);
+        if (builtin != null)
+            return Optional.of(builtin);
+
         for (Object map : scopes.toArray()) {
             Symbol symbol = ((Map<String, Symbol>)map).get(symbolName);
             if (symbol != null)

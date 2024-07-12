@@ -34,6 +34,8 @@ public class AssignmentNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
+        exp.validateTree(ctx);
+
         JottType expectedType = ctx.table.resolve(id.getTokenString(), SymbolTable.Binding.class)
                 .orElseThrow(() -> new SemanticException(SemanticException.Cause.UNKNOWN_BINDING, id))
                 .type;

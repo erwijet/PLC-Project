@@ -46,6 +46,8 @@ public class FuncDefParamsNode extends JottNode {
     }
 
     public List<JottType> resolveParamTypes(ValidationContext ctx) {
+        if (paramType == null) return List.of();
+
         List<JottType> paramTypes = new LinkedList<>(List.of(paramType.resolveType(ctx)));
         tail.forEach(node -> paramTypes.add(node.resolveType(ctx)));
 
@@ -54,6 +56,8 @@ public class FuncDefParamsNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
+        if (paramType == null) return;
+
         SymbolTable.Binding binding = new SymbolTable.Binding(paramName,
                 paramName.getTokenString(),
                 paramType.resolveType(ctx));

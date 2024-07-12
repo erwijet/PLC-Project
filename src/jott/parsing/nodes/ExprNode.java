@@ -107,6 +107,7 @@ public class ExprNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
+        children.forEach(child -> child.validateTree(ctx));
         resolveType(ctx);
     }
 }

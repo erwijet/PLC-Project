@@ -85,6 +85,9 @@ public class OperandNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
+        if (func != null)
+            func.validateTree(ctx);
+
         resolveType(ctx);
     }
 }

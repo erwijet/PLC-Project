@@ -13,12 +13,13 @@ import java.util.stream.Collectors;
 
 public class ParamsNode extends JottNode {
     ExprNode expr;
-    List<ParamsTNode> tail;
+    List<ParamsTNode> tail = new LinkedList<>();
 
     public static ParamsNode parse(ParseContext ctx) {
         ParamsNode node = new ParamsNode();
+        if (!ExprNode.canParse(ctx)) return node;
+
         node.expr = ExprNode.parse(ctx);
-        node.tail = new LinkedList<>();
 
         while (ctx.peekNextType() == TokenType.COMMA) {
             node.tail.add(ParamsTNode.parse(ctx));
@@ -30,12 +31,16 @@ public class ParamsNode extends JottNode {
     @Override
     public String convertToJott() {
         var ret = new StringBuilder();
+        if (expr == null) return "";
+
         ret.append(expr.convertToJott());
         tail.stream().map(JottTree::convertToJott).forEach(ret::append);
         return ret.toString();
     }
 
     public List<JottType> resolveParameterTypes(ValidationContext ctx) {
+        if (expr == null) return List.of();
+        
         List<JottType> types = new LinkedList<>(List.of(expr.resolveType(ctx)));
         tail.forEach(param -> types.add(param.resolveType(ctx)));
         return types;

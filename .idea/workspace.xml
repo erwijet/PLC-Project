@@ -10,30 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="whileloopnode maybe done?">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JottTranslater_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JottTranslater.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/funcCallParamInvalid.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/funcNotDefined.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/funcReturnInExpr.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/funcWrongParamType.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/helloWorld.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/ifStmtReturns.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/largerValid.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/mainReturnNotInt.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/mismatchedReturn.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/missingFuncParams.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/missingMain.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/missingReturn.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/noReturnIf.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/noReturnWhile.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/providedExample1.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/returnId.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/validLoop.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/voidReturn.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phase3testcases/whileKeyword.jott" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/Jott.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/Jott.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JottTranslater.jar" beforeDir="false" afterPath="$PROJECT_DIR$/JottTranslater.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/JottType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/JottType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/SymbolTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/AssignmentNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/AssignmentNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncCallNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncCallNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefParamsNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefParamsNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/OperandNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/OperandNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ParamsNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ParamsNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,31 +70,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Jott.executor&quot;: &quot;Run&quot;,
-    &quot;Application.JottParserTester.executor&quot;: &quot;Run&quot;,
-    &quot;Application.JottTokenizerTester.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/tyler/rit/plc/JottTranslater&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Jott.executor": "Run",
+    "Application.JottParserTester.executor": "Run",
+    "Application.JottTokenizerTester.executor": "Run",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/tyler/rit/plc/JottTranslater",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propCompiler",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="jott.parsing.nodes" />
@@ -124,6 +111,7 @@
     <configuration name="Jott" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="jott.Jott" />
       <module name="JottTranslater" />
+      <option name="PROGRAM_PARAMETERS" value="phase3testcases/missingFuncParams.jott ./out.jott jott" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="jott.*" />
@@ -229,6 +217,40 @@
     <option name="LAST_COMMIT_MESSAGE" value="whileloopnode maybe done?" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/FuncCallNode.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/BodyNode.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/WhileLoopNode.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/OperandNode.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/OperandNode.java</url>
+          <line>88</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="jott.parsing.nodes.BodyStmtNode" memberName="stmt" />

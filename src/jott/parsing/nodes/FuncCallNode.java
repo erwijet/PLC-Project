@@ -54,6 +54,9 @@ public class FuncCallNode extends JottNode {
             JottType expected = fn.parameterTypes.get(i);
             JottType found = paramTypes.get(i);
 
+            if (expected == JottType.ANY)
+                continue;
+
             if (expected != found)
                 throw new SemanticException(SemanticException.Cause.TYPE_CONFLICT, name, expected, found);
         }

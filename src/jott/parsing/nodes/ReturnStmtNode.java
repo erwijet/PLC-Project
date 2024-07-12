@@ -49,7 +49,9 @@ public class ReturnStmtNode extends JottNode {
                     kwd,
                     "Void",
                     enclosingFn.returnType);
-        }
+            }
+
+        if (isEmpty && enclosingFn.isVoid()) return; // null expr
 
         JottType exprType = expr.resolveType(ctx);
 
