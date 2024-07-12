@@ -22,13 +22,23 @@ public class BodyStmtNode extends JottNode {
 
         if (ctx.peekNextType() == TokenType.ID_KEYWORD) {
             if (ctx.peekNextStr().equals("If")) {
-                node.stmt = IfStmtNode.parse(ctx);
-                return node;
+                if (ctx.peekNextNextStr().equals("[")) {
+                    node.stmt = IfStmtNode.parse(ctx);
+                    return node;
+                } else if (ctx.peekNextNextStr().equals("=")) {
+                    node.stmt = AssignmentNode.parse(ctx);
+                    return node;
+                }
             }
 
             if (ctx.peekNextStr().equals("While")) {
-                node.stmt = WhileLoopNode.parse(ctx);
-                return node;
+                if (ctx.peekNextNextStr().equals("[")) {
+                    node.stmt = WhileLoopNode.parse(ctx);
+                    return node;
+                } else if (ctx.peekNextNextStr().equals("=")) {
+                    node.stmt = AssignmentNode.parse(ctx);
+                    return node;
+                }
             }
         }
 

@@ -18,7 +18,9 @@ public class FuncReturnNode extends JottNode {
 
         if (Objects.equals(ctx.peekNextStr(), "Void")) {
             ctx.eat(TokenType.ID_KEYWORD, "Void");
-        } else {
+        } else if(Objects.equals(ctx.peekNextStr(), "void"))
+            ctx.eat(TokenType.ID_KEYWORD, "void");
+        else {
             node.type = TypeNode.parse(ctx);
         }
 

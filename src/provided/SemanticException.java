@@ -13,7 +13,8 @@ public class SemanticException extends RuntimeException {
         UNEXPECTED_RETURN,
         MISSING_RETURN,
         CONFLICTING_IDENTIFIER,
-        LOWERCASE_VARS
+        LOWERCASE_VARS,
+        KEYWORD
     }
 
     private static String buildMessage(Cause cause, Token token, Object expected, Object found) {
@@ -50,6 +51,10 @@ public class SemanticException extends RuntimeException {
                     token.getFilename(),
                     token.getLineNum());
             case LOWERCASE_VARS -> String.format("Semantic Error:\nVariable '%s' must start with a lowercase letter\n%s:%d",
+                    token.getTokenString(),
+                    token.getFilename(),
+                    token.getLineNum());
+            case KEYWORD -> String.format("Semantic Error:\nVariable '%s' is a keyword, please choose another variable name\n%s:%d",
                     token.getTokenString(),
                     token.getFilename(),
                     token.getLineNum());

@@ -28,10 +28,18 @@ public class ParseContext {
         if (isEOF()) return null;
         return tokens.get(curIdx);
     }
+    public Token peekNextNext(){
+        if (isEOF()) return null;
+        return tokens.get(curIdx + 1);
+    }
 
     public String peekNextStr() {
         if (isEOF()) return null;
         return peekNext().getTokenString();
+    }
+    public String peekNextNextStr(){
+        if (isEOF()) return null;
+        return peekNextNext().getTokenString();
     }
 
     public TokenType peekNextType() {
