@@ -37,6 +37,8 @@ public class WhileLoopNode extends JottNode {
                     JottType.BOOLEAN,
                     conditionType);
         }
+
+        condition.validateTree(ctx);
         ctx.table.pushScope();
         body.validateTree(ctx);
         ctx.table.popScope();

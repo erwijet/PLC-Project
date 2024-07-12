@@ -29,4 +29,9 @@ abstract class JottNode implements JottTree {
     public void validateTree(ValidationContext ctx) {
         // pass
     }
+
+    @Override
+    public String toString() {
+        return this.convertToJott();
+    }
 }

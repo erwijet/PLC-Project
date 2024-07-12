@@ -107,7 +107,23 @@ public class ExprNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
+        switch (variant) {
+            case REL_OP, MATH_OP -> {
+                OperandNode lhs = (OperandNode) children.get(0);
+                OperandNode rhs = (OperandNode) children.get(2);
+
+                JottType expectedType = lhs.resolveType(ctx);
+                JottType foundType = rhs.resolveType(ctx);
+
+                if (expectedType != foundType) {
+                    throw new SemanticException(SemanticException.Cause.TYPE_CONFLICT,
+                            rhs.getToken(),
+                            expectedType,
+                            foundType);
+                }
+            }
+        }
+
         children.forEach(child -> child.validateTree(ctx));
-        resolveType(ctx);
     }
 }

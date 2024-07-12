@@ -3,7 +3,7 @@ Return x+1;
 }
 Def main[]: Void{
 Integer x;
-x = 0; While[x<10]{
-x = ::foo[]; ::print[x]; 
+x = 0; While[::foo[x]<10.0]{
+x = ::foo[x]; ::print[x]; 
 } 
 }
