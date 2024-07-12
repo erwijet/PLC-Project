@@ -37,12 +37,19 @@ public class FuncDefNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
-        SymbolTable.Function symbol = new SymbolTable.Function(funcId.getTokenString(),
+        SymbolTable.Function symbol = new SymbolTable.Function(
+                funcId,
                 params.resolveParamTypes(ctx),
                 funcReturn.isVoid() ? null : funcReturn.type.resolveType(ctx));
-
         ctx.table.insert(symbol);
 
+        ctx.table.pushScope();
+        ctx.enterFunction(funcId.getTokenString());
 
+        params.validateTree(ctx);
+        body.validateTree(ctx);
+
+        ctx.exitFunction();
+        ctx.table.popScope();
     }
 }

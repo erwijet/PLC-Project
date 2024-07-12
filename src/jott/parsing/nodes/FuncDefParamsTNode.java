@@ -1,6 +1,7 @@
 package jott.parsing.nodes;
 
 import jott.JottType;
+import jott.SymbolTable;
 import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.Token;
@@ -29,5 +30,13 @@ public class FuncDefParamsTNode extends JottNode {
 
     public JottType resolveType(ValidationContext ctx) {
         return paramType.resolveType(ctx);
+    }
+
+    @Override
+    public void validateTree(ValidationContext ctx) {
+        SymbolTable.Binding binding = new SymbolTable.Binding(paramName,
+                paramName.getTokenString(),
+                paramType.resolveType(ctx));
+        ctx.table.insert(binding);
     }
 }

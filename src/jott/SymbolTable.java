@@ -32,8 +32,8 @@ public class SymbolTable {
             return returnType == null;
         }
 
-        public Function(Token token, String name, List<JottType> parameterTypes, JottType returnType) {
-            super(token, name);
+        public Function(Token token, List<JottType> parameterTypes, JottType returnType) {
+            super(token, token.getTokenString());
             this.parameterTypes = parameterTypes;
             this.returnType = returnType;
         }
