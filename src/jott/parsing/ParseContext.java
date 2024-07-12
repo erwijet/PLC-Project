@@ -67,4 +67,13 @@ public class ParseContext {
 
         return token;
     }
+
+    public Token eatAndIgnoreCase(TokenType expectedType, String expectedStr) {
+        Token token = eat(expectedType);
+        if (!Objects.equals(token.getTokenString().toLowerCase(), expectedStr.toLowerCase())) {
+            throw new ParseException(ParseException.Cause.SYNTAX, this, expectedStr);
+        }
+
+        return token;
+    }
 }

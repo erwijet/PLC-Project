@@ -11,16 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="whileloopnode maybe done?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JottTranslater.jar" beforeDir="false" afterPath="$PROJECT_DIR$/JottTranslater.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/JottType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/JottType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/SymbolTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/AssignmentNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/AssignmentNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ExprNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncCallNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncCallNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefParamsNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefParamsNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/OperandNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/OperandNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ParamsNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ParamsNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/ReturnStmtNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/ParseContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/ParseContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jott/parsing/nodes/FuncDefNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +64,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Jott.executor": "Run",
+    "Application.Jott.executor": "Debug",
     "Application.JottParserTester.executor": "Run",
     "Application.JottTokenizerTester.executor": "Run",
     "Application.Main.executor": "Run",
@@ -91,7 +83,7 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propCompiler",
+    "settings.editor.selected.configurable": "preferences.intentionPowerPack",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -111,7 +103,7 @@
     <configuration name="Jott" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="jott.Jott" />
       <module name="JottTranslater" />
-      <option name="PROGRAM_PARAMETERS" value="phase3testcases/missingFuncParams.jott ./out.jott jott" />
+      <option name="PROGRAM_PARAMETERS" value="phase3testcases/validLoop.jott ./out.jott jott" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="jott.*" />

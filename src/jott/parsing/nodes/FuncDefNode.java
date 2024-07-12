@@ -17,7 +17,7 @@ public class FuncDefNode extends JottNode {
         // < function_def > -> Def <id >[ func_def_params ]: < function_return >{ < f_body >
         FuncDefNode node = new FuncDefNode();
 
-        ctx.eat(TokenType.ID_KEYWORD, "Def");
+        ctx.eatAndIgnoreCase(TokenType.ID_KEYWORD, "Def");
         node.funcId = ctx.eat(TokenType.ID_KEYWORD);
         ctx.eat(TokenType.L_BRACKET);
         node.params = FuncDefParamsNode.parse(ctx);
