@@ -33,7 +33,7 @@ public class Jott {
             ArrayList<Token> tokens = JottTokenizer.tokenize(input);
             JottTree tree = JottParser.parse(tokens);
             assert tree != null;
-            tree.validateTree()
+            tree.validateTree(new ValidationContext());
                 String code = "";
                 if (language.equalsIgnoreCase("jott"))
                     code += tree.convertToJott();
