@@ -1,8 +1,10 @@
 package jott.parsing.nodes;
 
+import jott.SemanticException;
 import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.parsing.ParseException;
+import jott.tokenization.Token;
 import jott.tokenization.TokenType;
 
 import java.util.LinkedList;
@@ -39,6 +41,15 @@ public class ProgramNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
-        functions.forEach(node -> node.validateTree(ctx));
+        boolean main = false;
+        Token t = null;
+        for(FuncDefNode node : functions) {
+            node.validateTree(ctx);
+            t = node.funcId;
+            if(node.funcId.getTokenString().equalsIgnoreCase("main"))
+                main = true;
+        }
+        if(!main) // no main
+            throw new SemanticException(SemanticException.Cause.MISSING_MAIN, t);
     }
 }

@@ -1,5 +1,6 @@
 package jott.parsing.nodes;
 
+import jott.SemanticException;
 import jott.SymbolTable;
 import jott.ValidationContext;
 import jott.parsing.ParseContext;
@@ -7,7 +8,7 @@ import jott.tokenization.Token;
 import jott.tokenization.TokenType;
 
 public class FuncDefNode extends JottNode {
-    private Token funcId;
+    public Token funcId;
     private FuncDefParamsNode params;
     private FuncReturnNode funcReturn;
     private FuncBodyNode body;
@@ -37,6 +38,9 @@ public class FuncDefNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
+        if(funcId.getTokenString().equalsIgnoreCase("main"))
+            if(!params.isEmpty || !funcReturn.isVoid()) // not correctly configured
+                throw new SemanticException(SemanticException.Cause.MISSING_MAIN, funcId);
         SymbolTable.Function symbol = new SymbolTable.Function(
                 funcId,
                 params.resolveParamTypes(ctx),
