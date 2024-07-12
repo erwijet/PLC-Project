@@ -1,5 +1,6 @@
 package jott.parsing.nodes;
 
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.parsing.ParseException;
 import jott.tokenization.Token;
@@ -42,5 +43,10 @@ public class BoolNode extends JottNode {
             case TRUE -> "True";
             case FALSE ->  "False";
         };
+    }
+
+    @Override
+    public void validateTree(ValidationContext ctx) {
+        // pass
     }
 }

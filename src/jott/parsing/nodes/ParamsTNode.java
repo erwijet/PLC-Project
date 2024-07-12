@@ -1,5 +1,7 @@
 package jott.parsing.nodes;
 
+import jott.JottType;
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.TokenType;
 
@@ -16,5 +18,9 @@ public class ParamsTNode extends JottNode {
     @Override
     public String convertToJott() {
         return "," + expr.convertToJott();
+    }
+
+    public JottType resolveType(ValidationContext ctx) {
+        return expr.resolveType(ctx);
     }
 }

@@ -1,5 +1,6 @@
 package jott.parsing.nodes;
 
+import jott.JottType;
 import jott.ValidationContext;
 import jott.parsing.ParseContext;
 
@@ -32,6 +33,7 @@ public class FuncBodyNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
-        return body.validateTree();
+        varDecls.forEach(node -> node.validateTree(ctx));
+        body.validateTree(ctx);
     }
 }

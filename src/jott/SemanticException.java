@@ -11,14 +11,22 @@ public class SemanticException extends RuntimeException {
         MISSING_RETURN_TYPE,
         UNKNOWN_FUNCTION,
         UNKNOWN_BINDING,
+        INCORRECT_ARGUMENT_COUNT,
         MISSING_MAIN,
         MALFORMED_TREE,
-        UNEXPECTED_RETURN
+        UNEXPECTED_RETURN,
+        CONFLICTING_IDENTIFIER
     }
 
     private static String buildMessage(Cause cause, Token token, Object expected, Object found) {
         return switch (cause) {
             case TYPE_CONFLICT -> String.format("Semantic Error:\nInvalid type for '%s'. Expected %s, but found %s\n%s:%d",
+                    token.getTokenString(),
+                    expected.toString(),
+                    found.toString(),
+                    token.getFilename(),
+                    token.getLineNum());
+            case INCORRECT_ARGUMENT_COUNT -> String.format("Semantic Error:\nInvalid argument count for '%s'. Expected %s, but found %s\n%s:%d",
                     token.getTokenString(),
                     expected.toString(),
                     found.toString(),
@@ -37,6 +45,10 @@ public class SemanticException extends RuntimeException {
                     token.getFilename(),
                     token.getLineNum());
             case MISSING_MAIN -> String.format("Semantic Error:\nMissing or incorrectly defined main function\n%s:%d",
+                    token.getFilename(),
+                    token.getLineNum());
+            case CONFLICTING_IDENTIFIER -> String.format("Semantic Error:\nIdentifier '%s' already exists\n%s:%d",
+                    expected,
                     token.getFilename(),
                     token.getLineNum());
             case UNEXPECTED_RETURN -> String.format("Semantic Error:\nUnexpected return statment. Not currently within a function\n%s:%d",

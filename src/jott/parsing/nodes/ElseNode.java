@@ -1,5 +1,6 @@
 package jott.parsing.nodes;
 
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.TokenType;
 
@@ -29,5 +30,13 @@ public class ElseNode extends JottNode {
         if (!empty)
             return "Else{\n" + body.convertToJott() + "\n}";
         return "";
+    }
+
+    @Override
+    public void validateTree(ValidationContext ctx) {
+        if (empty) return;
+        ctx.table.pushScope();
+        body.validateTree(ctx);
+        ctx.table.popScope();
     }
 }

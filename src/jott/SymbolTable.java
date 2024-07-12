@@ -1,32 +1,30 @@
 package jott;
 
+import jott.tokenization.Token;
+
 import java.util.*;
 
 public class SymbolTable {
-    public class ConflictException extends Exception {
-        public ConflictException(String msg) {
-            super(msg);
-        }
-    }
-
     public abstract class Symbol {
         public String name;
+        public Token token;
 
-        public Symbol(String name) {
+        public Symbol(Token token, String name) {
+            this.token = token;
             this.name = name;
         }
     }
 
-    public class Binding extends Symbol {
+    public static class Binding extends Symbol {
         public JottType type;
 
-        public Binding(String name, JottType type) {
-            super(name);
+        public Binding(Token token, String name, JottType type) {
+            super(token, name);
             this.type = type;
         }
     }
 
-    public class Function extends Symbol {
+    public static class Function extends Symbol {
         public List<JottType> parameterTypes;
         public JottType returnType;
 
@@ -34,8 +32,8 @@ public class SymbolTable {
             return returnType == null;
         }
 
-        public Function(String name, List<JottType> parameterTypes, JottType returnType) {
-            super(name);
+        public Function(Token token, String name, List<JottType> parameterTypes, JottType returnType) {
+            super(token, name);
             this.parameterTypes = parameterTypes;
             this.returnType = returnType;
         }
@@ -98,14 +96,15 @@ public class SymbolTable {
      * Inserts a new symbol into the current scope
      *
      * @param symbol the symbol to insert
-     * @throws ConflictException if a symbol with a conflicting {@link Symbol#name name} exists
+     * @throws SemanticException if a symbol with a conflicting {@link Symbol#name name} exists
      */
-    public <T extends Symbol> void insert(T symbol) throws ConflictException {
+    public <T extends Symbol> void insert(T symbol) {
         Optional<Symbol> conflicting = resolve(symbol.name);
         if (conflicting.isPresent()) {
-            throw new ConflictException(String.format("Symbol '%s' (%s) already exists in the current scope.",
+            throw new SemanticException(SemanticException.Cause.CONFLICTING_IDENTIFIER,
+                    conflicting.get().token,
                     symbol.name,
-                    conflicting.get()));
+                    null);
         }
 
         this.getScope().put(symbol.name, symbol);

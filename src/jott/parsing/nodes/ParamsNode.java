@@ -1,6 +1,8 @@
 package jott.parsing.nodes;
 
 import jott.JottTree;
+import jott.JottType;
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.TokenType;
 
@@ -31,5 +33,11 @@ public class ParamsNode extends JottNode {
         ret.append(expr.convertToJott());
         tail.stream().map(JottTree::convertToJott).forEach(ret::append);
         return ret.toString();
+    }
+
+    public List<JottType> resolveParameterTypes(ValidationContext ctx) {
+        List<JottType> types = new LinkedList<>(List.of(expr.resolveType(ctx)));
+        tail.forEach(param -> types.add(param.resolveType(ctx)));
+        return types;
     }
 }

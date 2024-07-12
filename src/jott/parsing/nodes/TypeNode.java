@@ -1,6 +1,7 @@
 package jott.parsing.nodes;
 
 import jott.JottType;
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.parsing.ParseException;
 import jott.tokenization.Token;
@@ -44,5 +45,9 @@ public class TypeNode extends JottNode {
     @Override
     public String convertToJott() {
         return token.getTokenString();
+    }
+
+    public JottType resolveType(ValidationContext ctx) {
+        return variant;
     }
 }

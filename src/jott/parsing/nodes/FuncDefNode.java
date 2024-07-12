@@ -34,4 +34,15 @@ public class FuncDefNode extends JottNode {
     public String convertToJott() {
         return "Def " + funcId.getTokenString() + "[" + params.convertToJott() + "]: " + funcReturn.convertToJott() + "{\n" + body.convertToJott() + "\n}";
     }
+
+    @Override
+    public void validateTree(ValidationContext ctx) {
+        SymbolTable.Function symbol = new SymbolTable.Function(funcId.getTokenString(),
+                params.resolveParamTypes(ctx),
+                funcReturn.isVoid() ? null : funcReturn.type.resolveType(ctx));
+
+        ctx.table.insert(symbol);
+
+
+    }
 }
