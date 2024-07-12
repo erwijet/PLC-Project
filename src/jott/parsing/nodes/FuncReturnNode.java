@@ -1,5 +1,6 @@
 package jott.parsing.nodes;
 
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.TokenType;
 
@@ -29,5 +30,10 @@ public class FuncReturnNode extends JottNode {
         if(type != null)
             return type.convertToJott();
         return "Void";
+    }
+
+    @Override
+    public void validateTree(ValidationContext ctx) {
+        // pass
     }
 }

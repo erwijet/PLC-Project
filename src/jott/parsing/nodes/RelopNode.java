@@ -19,4 +19,9 @@ public class RelopNode extends JottNode {
     public String convertToJott() {
         return token.getTokenString();
     }
+
+    @Override
+    public void validateTree(ValidationContext ctx) {
+        // pass
+    }
 }

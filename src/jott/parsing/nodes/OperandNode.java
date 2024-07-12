@@ -85,6 +85,6 @@ public class OperandNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
-        return super.validateTree(ctx); //  TODO: implement
+        resolveType(ctx);
     }
 }

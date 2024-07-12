@@ -103,6 +103,10 @@ public class ExprNode extends JottNode {
             case MATH_OP -> // lhs of math op sets type (either INTEGER/DOUBLE)
                     ((OperandNode) children.get(0)).resolveType(ctx);
         };
+    }
 
+    @Override
+    public void validateTree(ValidationContext ctx) {
+        resolveType(ctx);
     }
 }

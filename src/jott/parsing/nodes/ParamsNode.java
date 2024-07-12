@@ -40,4 +40,10 @@ public class ParamsNode extends JottNode {
         tail.forEach(param -> types.add(param.resolveType(ctx)));
         return types;
     }
+
+    @Override
+    public void validateTree(ValidationContext ctx) {
+        expr.validateTree(ctx);
+        tail.forEach(node -> node.validateTree(ctx));
+    }
 }

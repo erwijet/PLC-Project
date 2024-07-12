@@ -1,5 +1,6 @@
 package jott.parsing.nodes;
 
+import jott.ValidationContext;
 import jott.parsing.ParseContext;
 import jott.tokenization.Token;
 import jott.tokenization.TokenType;
@@ -16,5 +17,10 @@ public class MathOpNode extends JottNode {
     @Override
     public String convertToJott() {
         return token.getTokenString();
+    }
+
+    @Override
+    public void validateTree(ValidationContext ctx) {
+        // pass
     }
 }

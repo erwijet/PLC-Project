@@ -39,9 +39,6 @@ public class ProgramNode extends JottNode {
 
     @Override
     public void validateTree(ValidationContext ctx) {
-        for(FuncDefNode function : functions)
-            if(!function.validateTree())
-                return false;
-        return true;
+        functions.forEach(node -> node.validateTree(ctx));
     }
 }

@@ -23,4 +23,9 @@ public class ParamsTNode extends JottNode {
     public JottType resolveType(ValidationContext ctx) {
         return expr.resolveType(ctx);
     }
+
+    @Override
+    public void validateTree(ValidationContext ctx) {
+        expr.validateTree(ctx);
+    }
 }
