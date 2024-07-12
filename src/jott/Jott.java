@@ -33,7 +33,7 @@ public class Jott {
             ArrayList<Token> tokens = JottTokenizer.tokenize(input);
             JottTree tree = JottParser.parse(tokens);
             assert tree != null;
-            if(tree.validateTree()) { // todo: needs to run entire tree which it isnt set up for currently
+            tree.validateTree()
                 String code = "";
                 if (language.equalsIgnoreCase("jott"))
                     code += tree.convertToJott();
@@ -46,7 +46,6 @@ public class Jott {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(output));
                 writer.write(code);
                 writer.close();
-            }
         }
         catch (IOException e){ // not valid output file
             System.out.println("Error: output file " + output + "is not a valid file or is not readable/writeable.");
