@@ -1,5 +1,6 @@
 package jott;
 
+import jott.parsing.ParseContext;
 import jott.parsing.ParseException;
 import jott.tokenization.JottTokenizationException;
 import jott.tokenization.JottTokenizer;
@@ -50,7 +51,8 @@ public class Jott {
         catch (IOException e){ // not valid output file
             System.out.println("Error: output file " + output + "is not a valid file or is not readable/writeable.");
         }
-        catch(ParseException | JottTokenizationException | SemanticException e){ // tokenizer, parser, semantic exception
+        catch(ParseException | SemanticException e) { // tokenizer, parser, semantic exception
+            System.err.println(e.getMessage());
         }
     }
 }
