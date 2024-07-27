@@ -32,8 +32,10 @@ public class Jott {
                 String code = "";
                 if (language.equalsIgnoreCase("jott"))
                     code += tree.convertToJott();
-                else if (language.equalsIgnoreCase("java")) // todo: get proper class name
-                    code += tree.convertToJava("");
+                else if (language.equalsIgnoreCase("java")) {
+                    int index = output.indexOf(".");
+                    code += tree.convertToJava(output.substring(0, index));
+                }
                 else if (language.equalsIgnoreCase("python"))
                     code += tree.convertToPython();
                 else

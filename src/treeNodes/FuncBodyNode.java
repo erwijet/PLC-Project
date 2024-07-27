@@ -36,6 +36,29 @@ public class FuncBodyNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        var ret = new StringBuilder();
+        varDecls.forEach(it -> ret.append(it.convertToC()).append("\n"));
+        ret.append(body.convertToC());
+        return ret.toString();
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        var ret = new StringBuilder();
+        varDecls.forEach(it -> ret.append(it.convertToJava(className)).append("\n"));
+        ret.append(body.convertToJava(className));
+        return ret.toString();
+    }
+    @Override
+    public String convertToPython() {
+        var ret = new StringBuilder();
+        varDecls.forEach(it -> ret.append(it.convertToPython()).append("\n\t"));
+        ret.append(body.convertToC());
+        return ret.toString();
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         varDecls.forEach(node -> node.validateTree(ctx));
         body.validateTree(ctx);

@@ -20,6 +20,21 @@ public class RelopNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        return token.getTokenString();
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        return token.getTokenString();
+    }
+
+    @Override
+    public String convertToPython() {
+        return token.getTokenString();
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         // pass
     }

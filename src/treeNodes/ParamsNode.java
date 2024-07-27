@@ -36,6 +36,29 @@ public class ParamsNode extends JottNode {
         return ret.toString();
     }
 
+    @Override
+    public String convertToC() {
+        if (expr == null) return "";
+        var ret = new StringBuilder();
+        ret.append(expr.convertToC());
+        tail.stream().map(JottTree::convertToC).forEach(ret::append);
+        return ret.toString();
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        return ""; // not rn
+    }
+
+    @Override
+    public String convertToPython() {
+        if (expr == null) return "";
+        var ret = new StringBuilder();
+        ret.append(expr.convertToPython());
+        tail.stream().map(JottTree::convertToPython).forEach(ret::append);
+        return ret.toString();
+    }
+
     public List<JottType> resolveParameterTypes(SemanticValidationContext ctx) {
         if (expr == null) return List.of();
         

@@ -20,6 +20,21 @@ public class StrLiteralNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        return token.getTokenString();
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        return token.getTokenString();
+    }
+
+    @Override
+    public String convertToPython() {
+        return token.getTokenString();
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) { // this one might also just not be needed as this is handled in parsing, but if it needs code i do have it
         // pass
     }

@@ -49,6 +49,35 @@ public class TypeNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        return switch (variant) {
+            case DOUBLE -> "double";
+            case INTEGER -> "int";
+            case STRING -> "char*";
+            case BOOLEAN -> "bool"; // this is tricky cuz bool is not a default
+            default -> // shouldn't happen \
+                    "";
+        };
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        return switch (variant) {
+            case DOUBLE -> "double";
+            case INTEGER -> "int";
+            case STRING -> "String";
+            case BOOLEAN -> "boolean";
+            default -> // shouldn't happen
+                    "";
+        };
+    }
+
+    @Override
+    public String convertToPython() {
+        return ""; // no need?
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         switch (variant) {
             case DOUBLE:

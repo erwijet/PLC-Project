@@ -32,6 +32,23 @@ public class ReturnStmtNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        if(isEmpty)
+            return "return 1;";
+        return "return " + expr.convertToC() + ";";
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        return isEmpty ? "" : "return " + expr.convertToJava(className) + ";";
+    }
+
+    @Override
+    public String convertToPython() {
+        return isEmpty ? "" : "return " + expr.convertToPython() + ";";
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         SymbolTable.Function enclosingFn = ctx.getEnclosingFunction().orElseThrow(() ->
             new SemanticException(SemanticException.Cause.UNEXPECTED_RETURN, expr.getFirstToken()));

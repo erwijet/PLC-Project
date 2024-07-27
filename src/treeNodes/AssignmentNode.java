@@ -33,6 +33,21 @@ public class AssignmentNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        return id.getTokenString() + " = " + exp.convertToC() + ";";
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        return id.getTokenString() + " = " + exp.convertToJava(className) + ";";
+    }
+
+    @Override
+    public String convertToPython() {
+        return id.getTokenString() + " = " + exp.convertToPython();
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         exp.validateTree(ctx);
 

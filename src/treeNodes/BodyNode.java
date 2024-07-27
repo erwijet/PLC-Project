@@ -36,6 +36,27 @@ public class BodyNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        String str = "";
+        for (BodyStmtNode stmt : bodyStmts) str += stmt.convertToC() + " ";
+        return str + returnStmt.convertToC();
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        String str = "";
+        for (BodyStmtNode stmt : bodyStmts) str += stmt.convertToJava(className) + " ";
+        return str + returnStmt.convertToJava(className);
+    }
+
+    @Override
+    public String convertToPython() {
+        String str = "\t";
+        for (BodyStmtNode stmt : bodyStmts) str += stmt.convertToPython() + "\n\t";
+        return str + returnStmt.convertToPython();
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         bodyStmts.forEach(stmt -> stmt.validateTree(ctx));
 

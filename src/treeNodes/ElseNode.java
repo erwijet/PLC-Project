@@ -37,6 +37,27 @@ public class ElseNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        if (!empty)
+            return "else{\n" + body.convertToC() + "\n}";
+        return "";
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        if (!empty)
+            return "else{\n" + body.convertToJava(className) + "\n}";
+        return "";
+    }
+
+    @Override
+    public String convertToPython() {
+        if (!empty)
+            return "else:\n" + body.convertToPython();
+        return "";
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         if (empty) return;
         ctx.table.pushScope();

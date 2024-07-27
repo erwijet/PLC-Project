@@ -28,6 +28,21 @@ public class FuncDefParamsTNode extends JottNode {
         return ", " + paramName.getTokenString() + ":" + paramType.convertToJott();
     }
 
+    @Override
+    public String convertToC() {
+        return ", " + paramType.convertToC() + " " + paramName.getTokenString();
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        return ", " + paramType.convertToJava(className) + " " + paramName.getTokenString();
+    }
+
+    @Override
+    public String convertToPython() {
+        return ", " + paramType.convertToPython() + " " + paramName.getTokenString();
+    }
+
     public JottType resolveType(SemanticValidationContext ctx) {
         return paramType.resolveType(ctx);
     }

@@ -29,6 +29,21 @@ public class WhileLoopNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        return "while(" + condition.convertToC() + "){\n" + body.convertToC() + "\n}";
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        return "while(" + condition.convertToJava(className) + "){\n" + body.convertToJava(className) + "\n}";
+    }
+
+    @Override
+    public String convertToPython() {
+        return "while " + condition.convertToPython() + ":\n\t" + body.convertToPython() + "\n";
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         JottType conditionType = condition.resolveType(ctx);
         if (conditionType != JottType.BOOLEAN) { // make sure condition is a boolean

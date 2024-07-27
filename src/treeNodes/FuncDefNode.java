@@ -37,6 +37,25 @@ public class FuncDefNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        if(funcId.getTokenString().equalsIgnoreCase("main"))
+            return funcReturn.convertToC() +" " + funcId.getTokenString() + "(void){" + body.convertToC() + "\n}";
+        return funcReturn.convertToC() + " " + funcId.getTokenString() + "(" + params.convertToC() + "){" + body.convertToC() + "\n}";
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        if(funcId.getTokenString().equalsIgnoreCase("main"))
+            return "public static " + funcReturn.convertToJava(className) + " " + funcId.getTokenString() + "(String args[]){" + body.convertToJava(className) + "\n}";
+        return "public " + funcReturn.convertToJava(className) + " " + funcId.getTokenString() + "(" + params.convertToJava(className) + "){" + body.convertToJava(className) + "\n}";
+    }
+
+    @Override
+    public String convertToPython() {
+        return "def " + funcId.getTokenString() + "(" + params.convertToPython() + "):";
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         if(funcId.getTokenString().equalsIgnoreCase("main"))
             if(!params.isEmpty || !funcReturn.isVoid()) // not correctly configured

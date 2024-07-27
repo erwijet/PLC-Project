@@ -79,6 +79,27 @@ public class ExprNode extends JottNode {
                 .collect(Collectors.joining());
     }
 
+    @Override
+    public String convertToC() {
+        return children
+                .stream()
+                .map(JottTree::convertToC)
+                .collect(Collectors.joining());
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        return ""; // annoying
+    }
+
+    @Override
+    public String convertToPython() {
+        return children
+                .stream()
+                .map(JottTree::convertToPython)
+                .collect(Collectors.joining());
+    }
+
     public Token getFirstToken() {
         return switch (variant) {
             case LITERAL -> {

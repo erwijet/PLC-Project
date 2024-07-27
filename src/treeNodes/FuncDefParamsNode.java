@@ -45,6 +45,39 @@ public class FuncDefParamsNode extends JottNode {
         return "";
     }
 
+    @Override
+    public String convertToC() {
+        if (!isEmpty) {
+            StringBuilder str = new StringBuilder(paramType.convertToC() + " " + paramName.getTokenString());
+            for (FuncDefParamsTNode t: tail) str.append(t.convertToC());
+            return str.toString();
+        }
+
+        return "";
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        if (!isEmpty) {
+            StringBuilder str = new StringBuilder(paramType.convertToJava(className) + " " + paramName.getTokenString());
+            for (FuncDefParamsTNode t: tail) str.append(t.convertToJava(className));
+            return str.toString();
+        }
+
+        return "";
+    }
+
+    @Override
+    public String convertToPython() {
+        if (!isEmpty) {
+            StringBuilder str = new StringBuilder(paramType.convertToPython() + " " + paramName.getTokenString());
+            for (FuncDefParamsTNode t: tail) str.append(t.convertToPython());
+            return str.toString();
+        }
+
+        return "";
+    }
+
     public List<JottType> resolveParamTypes(SemanticValidationContext ctx) {
         if (paramType == null) return List.of();
 

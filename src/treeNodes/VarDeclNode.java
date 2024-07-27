@@ -35,6 +35,21 @@ public class VarDeclNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        return type.convertToC() + " " + identifier.getTokenString() + ";";
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        return type.convertToJava(className) + " " + identifier.getTokenString() + ";";
+    }
+
+    @Override
+    public String convertToPython() {
+        return identifier.getTokenString();
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         for (String keyword : keywords)
             if (identifier.getTokenString().equalsIgnoreCase(keyword))

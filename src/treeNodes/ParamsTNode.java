@@ -20,6 +20,21 @@ public class ParamsTNode extends JottNode {
         return "," + expr.convertToJott();
     }
 
+    @Override
+    public String convertToC() {
+        return "," + expr.convertToC();
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        return "," + expr.convertToJava(className);
+    }
+
+    @Override
+    public String convertToPython() {
+        return "," + expr.convertToC();
+    }
+
     public JottType resolveType(SemanticValidationContext ctx) {
         return expr.resolveType(ctx);
     }

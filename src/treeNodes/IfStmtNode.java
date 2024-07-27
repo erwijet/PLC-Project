@@ -48,6 +48,30 @@ public class IfStmtNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        String str = "if(" + condition.convertToC() + "){\n" + body.convertToC() + "\n}";
+        for(ElseIfNode elseif : elseif) str += elseif.convertToC();
+        if(els != null) str += els.convertToC();
+        return str;
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        String str = "if(" + condition.convertToJava(className) + "){\n" + body.convertToJava(className) + "\n}";
+        for(ElseIfNode elseif : elseif) str += elseif.convertToJava(className);
+        if(els != null) str += els.convertToJava(className);
+        return str;
+    }
+
+    @Override
+    public String convertToPython() {
+        String str = "if " + condition.convertToC() + ":\n\t" + body.convertToPython() + "\n";
+        for(ElseIfNode elseif : elseif) str += elseif.convertToPython();
+        if(els != null) str += els.convertToPython();
+        return str;
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         JottType conditionType = condition.resolveType(ctx);
         if (conditionType != JottType.BOOLEAN) {

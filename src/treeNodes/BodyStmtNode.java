@@ -73,6 +73,37 @@ public class BodyStmtNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        var ret = new StringBuilder();
+        ret.append(stmt.convertToC());
+
+        if (stmt instanceof FuncCallNode) {
+            ret.append(";");
+        }
+
+        return ret.toString();
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        var ret = new StringBuilder();
+        ret.append(stmt.convertToJava(className));
+
+        if (stmt instanceof FuncCallNode) {
+            ret.append(";");
+        }
+
+        return ret.toString();
+    }
+
+    @Override
+    public String convertToPython() {
+        var ret = new StringBuilder();
+        ret.append(stmt.convertToPython());
+        return ret.toString();
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         stmt.validateTree(ctx);
     }

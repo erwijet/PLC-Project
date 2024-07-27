@@ -31,6 +31,20 @@ public class ElseIfNode extends JottNode {
     public String convertToJott() {
         return "Elseif[" + condition.convertToJott() + "]{\n" + body.convertToJott() + "\n}";
     }
+    @Override
+    public String convertToC() {
+        return "else if(" + condition.convertToC() + "){\n" + body.convertToC() + "\n}";
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        return "else if(" + condition.convertToJava(className) + "){\n" + body.convertToC() + "\n}";
+    }
+
+    @Override
+    public String convertToPython() {
+        return "else if " + condition.convertToPython() + ":\n" + body.convertToPython();
+    }
 
     @Override
     public void validateTree(SemanticValidationContext ctx) {

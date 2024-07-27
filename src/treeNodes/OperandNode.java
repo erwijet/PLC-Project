@@ -54,6 +54,45 @@ public class OperandNode extends JottNode {
         return str;
     }
 
+    @Override
+    public String convertToC() {
+        if(id != null)
+            return id.getTokenString();
+        if(func != null)
+            return func.convertToC();
+        String str = "";
+        if(negative)
+            str += "-";
+        str += num.getTokenString();
+        return str;
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        if(id != null)
+            return id.getTokenString();
+        if(func != null)
+            return func.convertToJava(className);
+        String str = "";
+        if(negative)
+            str += "-";
+        str += num.getTokenString();
+        return str;
+    }
+
+    @Override
+    public String convertToPython() {
+        if(id != null)
+            return id.getTokenString();
+        if(func != null)
+            return func.convertToPython();
+        String str = "";
+        if(negative)
+            str += "-";
+        str += num.getTokenString();
+        return str;
+    }
+
     public Token getToken() {
         if (id != null) return id;
         if (num != null) return num;

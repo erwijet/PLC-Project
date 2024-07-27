@@ -42,6 +42,28 @@ public class BoolNode extends JottNode {
             case FALSE ->  "False";
         };
     }
+    public String convertToC() {
+        return switch (this.variant) {
+            case TRUE -> "true";
+            case FALSE -> "false";
+        };
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        return switch (this.variant) {
+            case TRUE -> "true";
+            case FALSE -> "false";
+        };
+    }
+
+    @Override
+    public String convertToPython() {
+        return switch (this.variant) {
+            case TRUE -> "True";
+            case FALSE ->  "False";
+        };
+    }
 
     @Override
     public void validateTree(SemanticValidationContext ctx) {

@@ -34,6 +34,32 @@ public class FuncCallNode extends JottNode {
         return "::" + name.getTokenString() + "[" + params.convertToJott() + "]";
     }
 
+    // todo: need to do print, length, concat for all 3 languages
+    @Override
+    public String convertToC() {
+        if(name.getTokenString().equalsIgnoreCase("print")){
+            String str = "printf(";
+            // this is where the % stuff goes
+            str += ", " + params.convertToC() + ")";
+            return str;
+        }
+        return name.getTokenString() + "(" + params.convertToC() + ")";
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        if(name.getTokenString().equalsIgnoreCase("print")) {
+            String str = "System.out.println(" + params.convertToJava(className) + ");";
+            return str;
+        }
+        return name.getTokenString() + "(" + params.convertToJava(className) + ")";
+    }
+
+    @Override
+    public String convertToPython() {
+        return name.getTokenString() + "(" + params.convertToC() + ")";
+    }
+
     public Token getToken() {
         return name;
     }

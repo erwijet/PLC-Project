@@ -35,6 +35,25 @@ public class FuncReturnNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        if(type != null)
+            return type.convertToC();
+        return "void";
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        if(type != null)
+            return type.convertToC();
+        return "void";
+    }
+
+    @Override
+    public String convertToPython() {
+        return ""; // not applicable in python, just adding because
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         // pass
     }

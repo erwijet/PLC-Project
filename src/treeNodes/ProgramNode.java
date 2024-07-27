@@ -40,6 +40,39 @@ public class ProgramNode extends JottNode {
     }
 
     @Override
+    public String convertToC() {
+        var ret = new StringBuilder();
+        if(!functions.isEmpty()) // not sure if we put these on a blank file
+            ret.append("""
+                #include <stdio.h>
+                #include <string.h>
+                #include <stdlib.h>""");
+        for (FuncDefNode function : functions)
+            ret.append(function.convertToC()).append("\n");
+        return ret.toString();
+    }
+
+    @Override
+    public String convertToJava(String className) {
+        var ret = new StringBuilder();
+        if(!functions.isEmpty()) // not sure if we put this on a blank file
+            ret.append("public class ").append(className).append(" {");
+        for (FuncDefNode function : functions)
+            ret.append(function.convertToC()).append("\n");
+        return ret + "}";
+    }
+
+    @Override
+    public String convertToPython() {
+        var ret = new StringBuilder();
+        for (FuncDefNode function : functions)
+            ret.append(function.convertToJott()).append("\n");
+        if(!functions.isEmpty()) // not sure if add on blank file
+            ret.append("main()");
+        return ret.toString();
+    }
+
+    @Override
     public void validateTree(SemanticValidationContext ctx) {
         boolean main = false;
         Token t = null;
