@@ -45,6 +45,7 @@ public class ProgramNode extends JottNode {
         if(!functions.isEmpty()) // not sure if we put these on a blank file
             ret.append("""
                 #include <stdio.h>
+                #include <stdbool.h>
                 #include <string.h>
                 #include <stdlib.h>""");
         for (FuncDefNode function : functions)
