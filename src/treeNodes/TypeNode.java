@@ -54,8 +54,8 @@ public class TypeNode extends JottNode {
             case DOUBLE -> "double";
             case INTEGER -> "int";
             case STRING -> "char*";
-            case BOOLEAN -> "bool"; // this is tricky cuz bool is not a default
-            default -> // shouldn't happen \
+            case BOOLEAN -> "bool";
+            default -> // shouldn't happen
                     "";
         };
     }

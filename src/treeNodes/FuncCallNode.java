@@ -43,21 +43,44 @@ public class FuncCallNode extends JottNode {
             str += ", " + params.convertToC() + ")";
             return str;
         }
+        if(name.getTokenString().equalsIgnoreCase("concat")){
+
+        }
+        if(name.getTokenString().equalsIgnoreCase("length")){
+            return "strlen(" + params.convertToC() + ")";
+        }
         return name.getTokenString() + "(" + params.convertToC() + ")";
     }
 
     @Override
     public String convertToJava(String className) {
         if(name.getTokenString().equalsIgnoreCase("print")) {
-            String str = "System.out.println(" + params.convertToJava(className) + ");";
+            return "System.out.println(" + params.convertToJava(className) + ");";
+        }
+        if(name.getTokenString().equalsIgnoreCase("concat")) {
+            String str = params.tail.get(0).convertToJava(className);
+            for(int i = 1; i < params.tail.size(); i++)
+                str += " + " + params.tail.get(i).convertToJava(className);
             return str;
+        }
+        if(name.getTokenString().equalsIgnoreCase("length")) {
+            return params.convertToJava(className) + ".length()";
         }
         return name.getTokenString() + "(" + params.convertToJava(className) + ")";
     }
 
     @Override
     public String convertToPython() {
-        return name.getTokenString() + "(" + params.convertToC() + ")";
+        if(name.getTokenString().equalsIgnoreCase("concat")) {
+            String str = params.tail.get(0).convertToPython();
+            for(int i = 1; i < params.tail.size(); i++)
+                str += " + " + params.tail.get(i).convertToPython();
+            return str;
+        }
+        if(name.getTokenString().equalsIgnoreCase("length")) {
+            return "len(" + params.convertToPython() + ")";
+        }
+        return name.getTokenString() + "(" + params.convertToC() + ")"; // this works for print by default, i think
     }
 
     public Token getToken() {
