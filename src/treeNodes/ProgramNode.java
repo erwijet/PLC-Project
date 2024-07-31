@@ -57,9 +57,9 @@ public class ProgramNode extends JottNode {
     public String convertToJava(String className) {
         var ret = new StringBuilder();
         if(!functions.isEmpty()) // not sure if we put this on a blank file
-            ret.append("public class ").append(className).append(" {");
+            ret.append("public class ").append(className).append("{\n");
         for (FuncDefNode function : functions)
-            ret.append(function.convertToC()).append("\n");
+            ret.append(function.convertToJava(className)).append("\n");
         return ret + "}";
     }
 
@@ -67,7 +67,7 @@ public class ProgramNode extends JottNode {
     public String convertToPython() {
         var ret = new StringBuilder();
         for (FuncDefNode function : functions)
-            ret.append(function.convertToJott()).append("\n");
+            ret.append(function.convertToPython()).append("\n");
         if(!functions.isEmpty()) // not sure if add on blank file
             ret.append("main()");
         return ret.toString();

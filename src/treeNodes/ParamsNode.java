@@ -47,7 +47,11 @@ public class ParamsNode extends JottNode {
 
     @Override
     public String convertToJava(String className) {
-        return ""; // not rn
+        if (expr == null) return "";
+        var ret = new StringBuilder();
+        ret.append(expr.convertToJava(className));
+        tail.stream().map(t -> t.convertToJava(className)).forEach(ret::append);
+        return ret.toString();
     }
 
     @Override

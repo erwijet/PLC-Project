@@ -55,12 +55,19 @@ public class FuncCallNode extends JottNode {
     @Override
     public String convertToJava(String className) {
         if(name.getTokenString().equalsIgnoreCase("print")) {
-            return "System.out.println(" + params.convertToJava(className) + ");";
+            String str = "System.out.println(" + params.expr.convertToJava(className);
+            for(int i = 0; i < params.tail.size(); i++) {
+                int index = params.tail.get(i).convertToJava(className).indexOf(", ");
+                str += " + " + params.tail.get(i).convertToJava(className).substring(index);
+            }
+            return str + ")";
         }
         if(name.getTokenString().equalsIgnoreCase("concat")) {
-            String str = params.tail.get(0).convertToJava(className);
-            for(int i = 1; i < params.tail.size(); i++)
-                str += " + " + params.tail.get(i).convertToJava(className);
+            String str = params.expr.convertToJava(className);
+            for(int i = 0; i < params.tail.size(); i++) {
+                int index = params.tail.get(i).convertToJava(className).indexOf(", ");
+                str += " + " + params.tail.get(i).convertToJava(className).substring(index);
+            }
             return str;
         }
         if(name.getTokenString().equalsIgnoreCase("length")) {
@@ -72,9 +79,11 @@ public class FuncCallNode extends JottNode {
     @Override
     public String convertToPython() {
         if(name.getTokenString().equalsIgnoreCase("concat")) {
-            String str = params.tail.get(0).convertToPython();
-            for(int i = 1; i < params.tail.size(); i++)
-                str += " + " + params.tail.get(i).convertToPython();
+            String str = params.expr.convertToPython();
+            for(int i = 0; i < params.tail.size(); i++) {
+                int index = params.tail.get(i).convertToPython().indexOf(", ");
+                str += " + " + params.tail.get(i).convertToPython().substring(index);
+            }
             return str;
         }
         if(name.getTokenString().equalsIgnoreCase("length")) {

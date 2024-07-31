@@ -44,7 +44,7 @@ public class FuncReturnNode extends JottNode {
     @Override
     public String convertToJava(String className) {
         if(type != null)
-            return type.convertToC();
+            return type.convertToJava(className);
         return "void";
     }
 

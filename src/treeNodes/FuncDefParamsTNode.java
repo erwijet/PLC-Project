@@ -40,7 +40,7 @@ public class FuncDefParamsTNode extends JottNode {
 
     @Override
     public String convertToPython() {
-        return ", " + paramType.convertToPython() + " " + paramName.getTokenString();
+        return ", " + paramName.getTokenString();
     }
 
     public JottType resolveType(SemanticValidationContext ctx) {

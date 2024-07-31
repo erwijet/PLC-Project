@@ -53,8 +53,8 @@ public class FuncBodyNode extends JottNode {
     @Override
     public String convertToPython() {
         var ret = new StringBuilder();
-        varDecls.forEach(it -> ret.append(it.convertToPython()).append("\n\t"));
-        ret.append(body.convertToC());
+        varDecls.forEach(it -> ret.append(it.convertToPython()).append("\n\t")); // weird spacing things here, needs fix
+        ret.append(body.convertToPython());
         return ret.toString();
     }
 

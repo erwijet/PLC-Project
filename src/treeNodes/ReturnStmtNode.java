@@ -45,7 +45,7 @@ public class ReturnStmtNode extends JottNode {
 
     @Override
     public String convertToPython() {
-        return isEmpty ? "" : "return " + expr.convertToPython() + ";";
+        return isEmpty ? "" : "return " + expr.convertToPython();
     }
 
     @Override

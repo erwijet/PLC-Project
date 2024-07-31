@@ -32,13 +32,14 @@ public class Jott {
                 String code = "";
                 if (language.equalsIgnoreCase("jott"))
                     code += tree.convertToJott();
-                else if (language.equalsIgnoreCase("java")) {
-                    int index = output.indexOf(".");
-                    code += tree.convertToJava(output.substring(0, index));
+                if (language.equalsIgnoreCase("java")) {
+                    int indexBack = output.indexOf(".java");
+                    int indexFront = output.indexOf("/") + 1;
+                    code += tree.convertToJava(output.substring(indexFront, indexBack));
                 }
-                else if (language.equalsIgnoreCase("python"))
+                if (language.equalsIgnoreCase("python"))
                     code += tree.convertToPython();
-                else
+                if (language.equalsIgnoreCase("c"))
                     code += tree.convertToC();
                 BufferedWriter writer = new BufferedWriter(new FileWriter(output));
                 writer.write(code);

@@ -89,7 +89,10 @@ public class ExprNode extends JottNode {
 
     @Override
     public String convertToJava(String className) {
-        return ""; // annoying
+        return children
+                .stream()
+                .map(child -> child.convertToJava(className))
+                .collect(Collectors.joining());
     }
 
     @Override

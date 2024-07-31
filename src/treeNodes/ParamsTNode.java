@@ -32,7 +32,7 @@ public class ParamsTNode extends JottNode {
 
     @Override
     public String convertToPython() {
-        return "," + expr.convertToC();
+        return "," + expr.convertToPython();
     }
 
     public JottType resolveType(SemanticValidationContext ctx) {

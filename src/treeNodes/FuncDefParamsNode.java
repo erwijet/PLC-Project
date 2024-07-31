@@ -70,7 +70,7 @@ public class FuncDefParamsNode extends JottNode {
     @Override
     public String convertToPython() {
         if (!isEmpty) {
-            StringBuilder str = new StringBuilder(paramType.convertToPython() + " " + paramName.getTokenString());
+            StringBuilder str = new StringBuilder(paramName.getTokenString());
             for (FuncDefParamsTNode t: tail) str.append(t.convertToPython());
             return str.toString();
         }

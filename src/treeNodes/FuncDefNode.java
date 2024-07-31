@@ -52,7 +52,7 @@ public class FuncDefNode extends JottNode {
 
     @Override
     public String convertToPython() {
-        return "def " + funcId.getTokenString() + "(" + params.convertToPython() + "):";
+        return "def " + funcId.getTokenString() + "(" + params.convertToPython() + "):\n" + body.convertToPython() + "\n" + funcReturn.convertToPython();
     }
 
     @Override
