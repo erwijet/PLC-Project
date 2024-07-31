@@ -40,7 +40,7 @@ public class WhileLoopNode extends JottNode {
 
     @Override
     public String convertToPython() {
-        return "while " + condition.convertToPython() + ":\n\t" + body.convertToPython() + "\n";
+        return "while " + condition.convertToPython() + ":\n\t" + body.convertToPython();
     }
 
     @Override

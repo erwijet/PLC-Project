@@ -53,7 +53,7 @@ public class ElseNode extends JottNode {
     @Override
     public String convertToPython() {
         if (!empty)
-            return "else:\n" + body.convertToPython();
+            return "\nelse:\n" + body.convertToPython();
         return "";
     }
 

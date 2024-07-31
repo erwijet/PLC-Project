@@ -43,7 +43,7 @@ public class ElseIfNode extends JottNode {
 
     @Override
     public String convertToPython() {
-        return "else if " + condition.convertToPython() + ":\n" + body.convertToPython();
+        return "\nelse if " + condition.convertToPython() + ":\n" + body.convertToPython();
     }
 
     @Override

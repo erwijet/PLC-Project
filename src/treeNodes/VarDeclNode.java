@@ -46,7 +46,7 @@ public class VarDeclNode extends JottNode {
 
     @Override
     public String convertToPython() {
-        return identifier.getTokenString();
+        return ""; // not needed, just here because
     }
 
     @Override

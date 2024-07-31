@@ -65,7 +65,7 @@ public class IfStmtNode extends JottNode {
 
     @Override
     public String convertToPython() {
-        String str = "if " + condition.convertToC() + ":\n\t" + body.convertToPython() + "\n";
+        String str = "if " + condition.convertToC() + ":\n\t" + body.convertToPython();
         for(ElseIfNode elseif : elseif) str += elseif.convertToPython();
         if(els != null) str += els.convertToPython();
         return str;
