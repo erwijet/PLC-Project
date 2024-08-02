@@ -6,6 +6,8 @@ import provided.SemanticValidationContext;
 import provided.ParseContext;
 import provided.TokenType;
 
+import java.util.stream.Collectors;
+
 public class WhileLoopNode extends JottNode {
     private ExprNode condition;
     private BodyNode body;
@@ -40,7 +42,8 @@ public class WhileLoopNode extends JottNode {
 
     @Override
     public String convertToPython() {
-        return "while " + condition.convertToPython() + ":\n\t" + body.convertToPython();
+        return "while " + condition.convertToPython() + ":\n"
+                + body.convertToPython().lines().map(line -> "\t" + line).collect(Collectors.joining("\n"));
     }
 
     @Override
