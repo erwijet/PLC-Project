@@ -6,6 +6,8 @@ import provided.SemanticValidationContext;
 import provided.ParseContext;
 import provided.TokenType;
 
+import java.util.stream.Collectors;
+
 public class ElseIfNode extends JottNode {
     ExprNode condition;
     BodyNode body;
@@ -43,7 +45,8 @@ public class ElseIfNode extends JottNode {
 
     @Override
     public String convertToPython() {
-        return "\nelse if " + condition.convertToPython() + ":\n" + body.convertToPython();
+        return "else if " + condition.convertToPython() + ":\n"
+                + body.convertToPython().lines().map(line -> "\t" + line).collect(Collectors.joining("\n"));
     }
 
     @Override

@@ -5,6 +5,8 @@ import provided.ParseContext;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class BodyNode extends JottNode {
     List<BodyStmtNode> bodyStmts;
@@ -50,10 +52,9 @@ public class BodyNode extends JottNode {
     }
 
     @Override
-    public String convertToPython() { // todo: incorrect spacing here
-        String str = "\t";
-        for (BodyStmtNode stmt : bodyStmts) str += stmt.convertToPython() + "\n\t";
-        return str + returnStmt.convertToPython();
+    public String convertToPython() {
+        return bodyStmts.stream().map(BodyStmtNode::convertToPython).collect(Collectors.joining("\n"))
+            + Optional.of(returnStmt).map(it -> "\n" + it.convertToPython()).orElse("");
     }
 
     @Override

@@ -7,6 +7,8 @@ import provided.ParseContext;
 import provided.Token;
 import provided.TokenType;
 
+import java.util.stream.Collectors;
+
 public class FuncDefNode extends JottNode {
     public Token funcId;
     private FuncDefParamsNode params;
@@ -52,7 +54,8 @@ public class FuncDefNode extends JottNode {
 
     @Override
     public String convertToPython() {
-        return "def " + funcId.getTokenString() + "(" + params.convertToPython() + "):\n" + body.convertToPython() + "\n" + funcReturn.convertToPython();
+        return "def " + funcId.getTokenString() + "(" + params.convertToPython() + "):\n"
+                + body.convertToPython().lines().map(line -> "\t" + line).collect(Collectors.joining("\n"));
     }
 
     @Override

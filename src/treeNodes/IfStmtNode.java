@@ -9,6 +9,8 @@ import provided.TokenType;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class IfStmtNode extends JottNode {
     private ExprNode condition;
@@ -65,10 +67,10 @@ public class IfStmtNode extends JottNode {
 
     @Override
     public String convertToPython() {
-        String str = "if " + condition.convertToC() + ":\n\t" + body.convertToPython();
-        for(ElseIfNode elseif : elseif) str += elseif.convertToPython();
-        if(els != null) str += els.convertToPython();
-        return str;
+        return "if " + condition.convertToPython() + ":\n"
+                + body.convertToPython().lines().map(each -> "\t" + each).collect(Collectors.joining("\n"))
+                + elseif.stream().map(it -> "\n" + it.convertToPython()).collect(Collectors.joining("\n"))
+                + Optional.of(els).map(it -> "\n" + it.convertToPython()).orElse("");
     }
 
     @Override

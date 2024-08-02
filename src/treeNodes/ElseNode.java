@@ -5,6 +5,8 @@ import provided.ParseContext;
 import provided.TokenType;
 
 import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ElseNode extends JottNode {
     BodyNode body;
@@ -53,7 +55,7 @@ public class ElseNode extends JottNode {
     @Override
     public String convertToPython() {
         if (!empty)
-            return "\nelse:\n" + body.convertToPython();
+            return "else:\n" + body.convertToPython().lines().map(line -> "\t" + line).collect(Collectors.joining("\n"));
         return "";
     }
 
