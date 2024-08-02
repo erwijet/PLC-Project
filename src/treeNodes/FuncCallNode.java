@@ -9,6 +9,7 @@ import provided.Token;
 import provided.TokenType;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FuncCallNode extends JottNode {
     private Token name;
@@ -79,16 +80,14 @@ public class FuncCallNode extends JottNode {
     @Override
     public String convertToPython() {
         if(name.getTokenString().equalsIgnoreCase("concat")) {
-            String str = params.expr.convertToPython();
-            for(int i = 0; i < params.tail.size(); i++) {
-                int index = params.tail.get(i).convertToPython().indexOf(", ");
-                str += " + " + params.tail.get(i).convertToPython().substring(index);
-            }
-            return str;
+            return params.expr.convertToPython()
+                    + params.tail.stream().map(each -> "+" + each.expr.convertToPython()).collect(Collectors.joining());
         }
+
         if(name.getTokenString().equalsIgnoreCase("length")) {
             return "len(" + params.convertToPython() + ")";
         }
+
         return name.getTokenString() + "(" + params.convertToC() + ")"; // this works for print by default, i think
     }
 
