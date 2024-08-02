@@ -48,7 +48,7 @@ public class FuncDefNode extends JottNode {
     @Override
     public String convertToJava(String className) {
         if(funcId.getTokenString().equalsIgnoreCase("main"))
-            return "public static " + funcReturn.convertToJava(className) + " " + funcId.getTokenString() + "(String args[]){" + body.convertToJava(className) + "\n}";
+            return "public static " + funcReturn.convertToJava(className) + " " + funcId.getTokenString() + "(String[] args){" + body.convertToJava(className) + "\n}";
         return "public static " + funcReturn.convertToJava(className) + " " + funcId.getTokenString() + "(" + params.convertToJava(className) + "){" + body.convertToJava(className) + "\n}";
     }
 

@@ -56,20 +56,11 @@ public class FuncCallNode extends JottNode {
     @Override
     public String convertToJava(String className) {
         if(name.getTokenString().equalsIgnoreCase("print")) {
-            String str = "System.out.println(" + params.expr.convertToJava(className);
-            for(int i = 0; i < params.tail.size(); i++) {
-                int index = params.tail.get(i).convertToJava(className).indexOf(", ");
-                str += " + " + params.tail.get(i).convertToJava(className).substring(index);
-            }
-            return str + ")";
+            return "System.out.println(" + params.expr.convertToJava(className) + ")";
         }
         if(name.getTokenString().equalsIgnoreCase("concat")) {
-            String str = params.expr.convertToJava(className);
-            for(int i = 0; i < params.tail.size(); i++) {
-                int index = params.tail.get(i).convertToJava(className).indexOf(", ");
-                str += " + " + params.tail.get(i).convertToJava(className).substring(index);
-            }
-            return str;
+            return params.expr.convertToJava(className)
+                    + params.tail.stream().map(each -> "+" + each.expr.convertToJava(className)).collect(Collectors.joining());
         }
         if(name.getTokenString().equalsIgnoreCase("length")) {
             return params.convertToJava(className) + ".length()";

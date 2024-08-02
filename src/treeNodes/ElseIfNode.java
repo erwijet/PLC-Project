@@ -40,7 +40,7 @@ public class ElseIfNode extends JottNode {
 
     @Override
     public String convertToJava(String className) {
-        return "else if(" + condition.convertToJava(className) + "){\n" + body.convertToC() + "\n}";
+        return "else if(" + condition.convertToJava(className) + "){\n" + body.convertToJava(className) + "\n}";
     }
 
     @Override
