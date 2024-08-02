@@ -55,7 +55,7 @@ public class FuncBodyNode extends JottNode {
         var ret = new StringBuilder();
         // no vardecls in python
         ret.append(body.convertToPython());
-        return ret.toString();
+        return ret + "\n\n";
     }
 
     @Override

@@ -100,7 +100,7 @@ public class ExprNode extends JottNode {
         return children
                 .stream()
                 .map(JottTree::convertToPython)
-                .collect(Collectors.joining());
+                .collect(Collectors.joining(" "));
     }
 
     public Token getFirstToken() {

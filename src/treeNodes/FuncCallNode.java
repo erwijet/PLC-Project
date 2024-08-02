@@ -81,14 +81,14 @@ public class FuncCallNode extends JottNode {
     public String convertToPython() {
         if(name.getTokenString().equalsIgnoreCase("concat")) {
             return params.expr.convertToPython()
-                    + params.tail.stream().map(each -> "+" + each.expr.convertToPython()).collect(Collectors.joining());
+                    + params.tail.stream().map(each -> " + " + each.expr.convertToPython()).collect(Collectors.joining());
         }
 
         if(name.getTokenString().equalsIgnoreCase("length")) {
             return "len(" + params.convertToPython() + ")";
         }
 
-        return name.getTokenString() + "(" + params.convertToC() + ")"; // this works for print by default, i think
+        return name.getTokenString() + "(" + params.convertToPython() + ")"; // this works for print by default, i think
     }
 
     public Token getToken() {

@@ -69,7 +69,7 @@ public class ProgramNode extends JottNode {
         for (FuncDefNode function : functions)
             ret.append(function.convertToPython()).append("\n");
         if(!functions.isEmpty()) // not sure if add on blank file
-            ret.append("main()");
+            ret.append("main()\n");
         return ret.toString();
     }
 

@@ -45,7 +45,7 @@ public class ElseIfNode extends JottNode {
 
     @Override
     public String convertToPython() {
-        return "else if " + condition.convertToPython() + ":\n"
+        return "elif " + condition.convertToPython() + ":\n"
                 + body.convertToPython().lines().map(line -> "\t" + line).collect(Collectors.joining("\n"));
     }
 
