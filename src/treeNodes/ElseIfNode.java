@@ -19,7 +19,7 @@ public class ElseIfNode extends JottNode {
         ctx.eat(TokenType.R_BRACKET);
         ctx.eat(TokenType.L_BRACE);
         node.body = BodyNode.parse(ctx);
-        ctx.eat(TokenType.R_BRACKET);
+        ctx.eat(TokenType.R_BRACE);
         return node;
     }
 
