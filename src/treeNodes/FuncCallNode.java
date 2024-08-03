@@ -40,9 +40,9 @@ public class FuncCallNode extends JottNode {
     public String convertToC() {
         if(name.getTokenString().equalsIgnoreCase("print")) {
             String fmt = switch (params.expr.type) {
-                case ANY, STRING -> "%s";
-                case DOUBLE -> "%f";
-                case INTEGER, BOOLEAN -> "%d";
+                case ANY, STRING -> "%s\\n";
+                case DOUBLE -> "%f\\n";
+                case INTEGER, BOOLEAN -> "%d\\n";
             };
 
             return "printf(\"" + fmt + "\"," + params.convertToC() + ")";
