@@ -8,6 +8,7 @@ import provided.TokenType;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 public class ParamsNode extends JottNode {
     ExprNode expr;
@@ -73,7 +74,7 @@ public class ParamsNode extends JottNode {
 
     @Override
     public void validateTree(SemanticValidationContext ctx) {
-        expr.validateTree(ctx);
+        Optional.ofNullable(expr).ifPresent(it -> it.validateTree(ctx));
         tail.forEach(node -> node.validateTree(ctx));
     }
 }

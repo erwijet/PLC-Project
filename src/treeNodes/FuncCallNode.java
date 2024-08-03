@@ -38,14 +38,17 @@ public class FuncCallNode extends JottNode {
     // todo: need to do print, length, concat for all 3 languages
     @Override
     public String convertToC() {
-        if(name.getTokenString().equalsIgnoreCase("print")){
-            String str = "printf(";
-            // this is where the % stuff goes
-            str += ", " + params.convertToC() + ")";
-            return str;
-        }
-        if(name.getTokenString().equalsIgnoreCase("concat")){
+        if(name.getTokenString().equalsIgnoreCase("print")) {
+            String fmt = switch (params.expr.type) {
+                case ANY, STRING -> "%s";
+                case DOUBLE -> "%f";
+                case INTEGER, BOOLEAN -> "%d";
+            };
 
+            return "printf(\"" + fmt + "\"," + params.convertToC() + ")";
+        }
+        if (name.getTokenString().equalsIgnoreCase("concat")){
+            return "__jott_concat(" + params.convertToC() + ")";
         }
         if(name.getTokenString().equalsIgnoreCase("length")){
             return "strlen(" + params.convertToC() + ")";
@@ -90,6 +93,8 @@ public class FuncCallNode extends JottNode {
     public void validateTree(SemanticValidationContext ctx) {
         SymbolTable.Function fn = ctx.table.resolve(name.getTokenString(), SymbolTable.Function.class)
                 .orElseThrow(() -> new SemanticException(SemanticException.Cause.UNKNOWN_FUNCTION, name));
+
+        params.validateTree(ctx);
 
         List<JottType> paramTypes = params.resolveParameterTypes(ctx);
         if (paramTypes.size() != fn.parameterTypes.size())

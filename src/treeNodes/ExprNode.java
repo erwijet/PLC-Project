@@ -23,6 +23,7 @@ public class ExprNode extends JottNode {
 
     List<JottNode> children;
     Variant variant;
+    JottType type;
 
     public static boolean canParse(ParseContext ctx) {
         return OperandNode.canParse(ctx)
@@ -131,6 +132,8 @@ public class ExprNode extends JottNode {
 
     @Override
     public void validateTree(SemanticValidationContext ctx) {
+        type = resolveType(ctx);
+
         switch (variant) {
             case REL_OP, MATH_OP -> {
                 OperandNode lhs = (OperandNode) children.get(0);

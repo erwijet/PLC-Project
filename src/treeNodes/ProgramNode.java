@@ -48,6 +48,11 @@ public class ProgramNode extends JottNode {
                 #include <stdbool.h>
                 #include <string.h>
                 #include <stdlib.h>
+                
+                char* __jott_concat(char* s1, char* s2) {
+                  strcat(s1, s2);
+                  return s1;
+                }
                 """);
         for (FuncDefNode function : functions)
             ret.append(function.convertToC()).append("\n");
