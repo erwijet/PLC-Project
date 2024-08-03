@@ -11,11 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="db120a46-680c-431c-9847-9b65fae29d83" name="Changes" comment="whileloopnode maybe done?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNodes/ExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNodes/ExprNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNodes/FuncCallNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNodes/FuncCallNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNodes/ParamsNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNodes/ParamsNode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out.c" beforeDir="false" afterPath="$PROJECT_DIR$/out.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treeNodes/ProgramNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNodes/ProgramNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNodes/ReturnStmtNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNodes/ReturnStmtNode.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +107,7 @@
     <configuration name="Jott" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="provided.Jott" />
       <module name="JottTranslater" />
-      <option name="PROGRAM_PARAMETERS" value="reallyLong.jott ./out.c c" />
+      <option name="PROGRAM_PARAMETERS" value="reallyLong.jott ./out.py python" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="provided.*" />
@@ -186,7 +183,7 @@
       <workItem from="1719019278112" duration="6676000" />
       <workItem from="1722620636624" duration="6409000" />
       <workItem from="1722633492234" duration="1828000" />
-      <workItem from="1722651307144" duration="2791000" />
+      <workItem from="1722651307144" duration="3162000" />
     </task>
     <task id="LOCAL-00001" summary="whileloopnode maybe done?">
       <option name="closed" value="true" />
