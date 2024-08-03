@@ -36,11 +36,15 @@ public class VarDeclNode extends JottNode {
 
     @Override
     public String convertToC() {
+        if(identifier.getTokenString().equalsIgnoreCase("switch"))
+            return type.convertToC() + " __" + identifier.getTokenString() + ";"; // stupid
         return type.convertToC() + " " + identifier.getTokenString() + ";";
     }
 
     @Override
     public String convertToJava(String className) {
+        if(identifier.getTokenString().equalsIgnoreCase("switch"))
+            return type.convertToJava(className) + " __" + identifier.getTokenString() + ";"; // stupid
         return type.convertToJava(className) + " " + identifier.getTokenString() + ";";
     }
 

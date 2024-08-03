@@ -34,11 +34,15 @@ public class AssignmentNode extends JottNode {
 
     @Override
     public String convertToC() {
+        if(id.getTokenString().equalsIgnoreCase("switch"))
+            return "__" + id.getTokenString() + " = " + exp.convertToC() + ";";
         return id.getTokenString() + " = " + exp.convertToC() + ";";
     }
 
     @Override
     public String convertToJava(String className) {
+        if(id.getTokenString().equalsIgnoreCase("switch"))
+            return "__" + id.getTokenString() + " = " + exp.convertToJava(className) + ";";
         return id.getTokenString() + " = " + exp.convertToJava(className) + ";";
     }
 

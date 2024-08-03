@@ -56,8 +56,11 @@ public class OperandNode extends JottNode {
 
     @Override
     public String convertToC() {
-        if(id != null)
+        if(id != null) {
+            if(id.getTokenString().equalsIgnoreCase("switch"))
+                return "__" + id.getTokenString();
             return id.getTokenString();
+        }
         if(func != null)
             return func.convertToC();
         String str = "";
@@ -69,8 +72,11 @@ public class OperandNode extends JottNode {
 
     @Override
     public String convertToJava(String className) {
-        if(id != null)
+        if(id != null) {
+            if(id.getTokenString().equalsIgnoreCase("switch"))
+                return "__" + id.getTokenString();
             return id.getTokenString();
+        }
         if(func != null)
             return func.convertToJava(className);
         String str = "";
