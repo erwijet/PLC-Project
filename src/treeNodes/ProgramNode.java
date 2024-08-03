@@ -47,7 +47,8 @@ public class ProgramNode extends JottNode {
                 #include <stdio.h>
                 #include <stdbool.h>
                 #include <string.h>
-                #include <stdlib.h>""");
+                #include <stdlib.h>
+                """);
         for (FuncDefNode function : functions)
             ret.append(function.convertToC()).append("\n");
         return ret.toString();

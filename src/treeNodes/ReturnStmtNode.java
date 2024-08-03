@@ -33,8 +33,6 @@ public class ReturnStmtNode extends JottNode {
 
     @Override
     public String convertToC() {
-        if(isEmpty)
-            return "return 1;";
         return "return " + expr.convertToC() + ";";
     }
 

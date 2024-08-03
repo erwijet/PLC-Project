@@ -41,7 +41,7 @@ public class FuncDefNode extends JottNode {
     @Override
     public String convertToC() {
         if(funcId.getTokenString().equalsIgnoreCase("main"))
-            return funcReturn.convertToC() +" " + funcId.getTokenString() + "(void){" + body.convertToC() + "\n}";
+            return "int " + funcId.getTokenString() + "(void){" + body.convertToC() + "\nreturn 1;\n}";
         return funcReturn.convertToC() + " " + funcId.getTokenString() + "(" + params.convertToC() + "){" + body.convertToC() + "\n}";
     }
 
